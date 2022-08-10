@@ -10,6 +10,8 @@ window.addEventListener("scroll", function() {
   const header = document.querySelector("header");
   header.classList.toggle("sticky", window.scrollY>0);
 })
+//modal
+
 
 carritoHTML()
 
@@ -50,28 +52,30 @@ productos.forEach((producto) => {
   if (producto.off30) {
     document.getElementById("lista-productos").innerHTML += `
     <div class="card">
-        <div class="img">
-        <img class="img-item" src="${producto.img}" alt="">
-        </div>
-        <div class="card-text">
-        <span class="price-tag"><span>$</span>${producto.price}</span>
-        <p class ="card-title">${producto.title}</p>
-        </div>
-        <div class="off30"">30% OFF</div>
-        <button class="agregar-carrito add-to" id="${producto.id}">Comprar</button>
+          <div class="img">
+          <img class="img-item" src="${producto.img}" alt="">
+          </div>
+          <div class="off30"">30% OFF</div>
+          <div class="card-text">
+          <span class="price-tag"><span>$${producto.price}</span></span>
+          <p class ="card-title">${producto.title}</p>
+          </div>
+          <button class="agregar-carrito add-to" id="${producto.id}">Adquirir<img src="assets/img/pokeballopen.png" class="add-to-img" id="2" alt=""></button>
+          
         </div>`;
   }
   else {
     document.getElementById("lista-productos").innerHTML += `
     <div class="card">
-        <div class="img">
-        <img class="img-item" src="${producto.img}" alt="">
-        </div>
-        <div class="card-text">
-        <span class="price-tag"><span>$</span>${producto.price}</span>
-        <p class ="card-title">${producto.title}</p>
-        </div>
-        <button class="agregar-carrito add-to" id="${producto.id}">Comprar</button>
+          <div class="img">
+          <img class="img-item" src="${producto.img}" alt="">
+          </div>
+          <div class="card-text">
+          <span class="price-tag"><span>$${producto.price}</span></span>
+          <p class ="card-title">${producto.title}</p>
+          </div>
+          <button class="agregar-carrito add-to" id="${producto.id}">Adquirir<img src="assets/img/pokeballopen.png" class="add-to-img" id="2" alt=""></button>
+          
         </div>`;
   }
 });

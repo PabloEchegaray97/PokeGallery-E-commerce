@@ -68,7 +68,7 @@ body {
 
 /*tarjeta*/
 .card {
-    height: 24rem;
+    height: 25rem;
     width: 14rem;
     display: flex;
     flex-direction: column;
@@ -102,9 +102,10 @@ p {
 }
 
 .price-tag {
-    margin-top: .5rem;
-    color: #000000;
-    font-size: 1.3rem;
+    margin: .5rem 0;
+    font-size: 1.4rem;
+    color: #171717;
+    font-weight: 700;
 }
 .product-price {
     margin:1rem;
@@ -120,25 +121,36 @@ p {
 .off30 {
     display: flex;
     width: 5rem;
-    background-color: #ea2b2b;
-    font-size: .8rem;
+    background-color: #e1e1e1db;
+    font-size: 1rem;
+    padding: .2rem;
     justify-content: center;
     position: absolute;
-    color: white;
+    color: #171717;
+    font-weight: 700;
     border-radius: 2px;
+    right: 0;
 }
 .add-to {
+    
+    background-color: white;
     border: 0;
-    background-color: #ea2b2b;
-    color: white;
     border-radius: 2px;
     padding: .3rem;
-    cursor: pointer;
+
     font-weight: 300;
-    font-size: .8rem;
+    font-size: 1.1rem;
+    transition: .5s;
+    font-weight: 600;
+}
+.add-to:hover {
+    background-color: #ea2b2b;
+    color: white;
+    transition: .1s;
 }
 .cart {
     margin-right: 2rem;
+    cursor: pointer;
 }
 .cart-img {
     position: absolute;
@@ -193,11 +205,16 @@ p {
     margin-left: 1rem;
 }
 .card-title {
-    text-overflow: ellipsis;
-    overflow:hidden;
+    // text-overflow: ellipsis;
+    // overflow:hidden;
+    display: none;
 }
 .card-text {
+    background-color: #e1e1e1db;
     height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .logo {
     width: 15rem;
@@ -227,21 +244,47 @@ p {
 .carrito {
     margin: 1rem;
 }
-.categories {
+.category {
     display: flex;
     width: 100%;
     height: 24rem;
-    background-color: #ea2b2b;
     justify-content: center;
     align-items: center;
 }
-.categories-item {
+.category-item {
+    border: 2px solid #e1e1e17b;
+    border-radius: 2px;
     width: 33%;
     height: 20rem;
     background-color: white;
     margin: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .section-text {
     margin-top: 1rem;
-    text-align: center;
+    background-color: #e1e1e17b;
+    height: 12rem;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+a {
+    text-decoration: none;
+}
+.category-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #e1e1e17b;
+}
+.add-to-img {
+    width: 3rem;
+    pointer-events: none;
+}
+.img-link {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
 }

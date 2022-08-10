@@ -78,7 +78,7 @@ body {
 
 /*tarjeta*/
 .card {
-  height: 24rem;
+  height: 25rem;
   width: 14rem;
   display: flex;
   flex-direction: column;
@@ -113,9 +113,10 @@ p {
 }
 
 .price-tag {
-  margin-top: 0.5rem;
-  color: #000000;
-  font-size: 1.3rem;
+  margin: 0.5rem 0;
+  font-size: 1.4rem;
+  color: #171717;
+  font-weight: 700;
 }
 
 .product-price {
@@ -135,27 +136,37 @@ p {
 .off30 {
   display: flex;
   width: 5rem;
-  background-color: #ea2b2b;
-  font-size: 0.8rem;
+  background-color: rgba(225, 225, 225, 0.8588235294);
+  font-size: 1rem;
+  padding: 0.2rem;
   justify-content: center;
   position: absolute;
-  color: white;
+  color: #171717;
+  font-weight: 700;
   border-radius: 2px;
+  right: 0;
 }
 
 .add-to {
+  background-color: white;
   border: 0;
-  background-color: #ea2b2b;
-  color: white;
   border-radius: 2px;
   padding: 0.3rem;
-  cursor: pointer;
   font-weight: 300;
-  font-size: 0.8rem;
+  font-size: 1.1rem;
+  transition: 0.5s;
+  font-weight: 600;
+}
+
+.add-to:hover {
+  background-color: #ea2b2b;
+  color: white;
+  transition: 0.1s;
 }
 
 .cart {
   margin-right: 2rem;
+  cursor: pointer;
 }
 
 .cart-img {
@@ -218,12 +229,15 @@ p {
 }
 
 .card-title {
-  text-overflow: ellipsis;
-  overflow: hidden;
+  display: none;
 }
 
 .card-text {
+  background-color: rgba(225, 225, 225, 0.8588235294);
   height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo {
@@ -257,25 +271,55 @@ p {
   margin: 1rem;
 }
 
-.categories {
+.category {
   display: flex;
   width: 100%;
   height: 24rem;
-  background-color: #ea2b2b;
   justify-content: center;
   align-items: center;
 }
 
-.categories-item {
+.category-item {
+  border: 2px solid rgba(225, 225, 225, 0.4823529412);
+  border-radius: 2px;
   width: 33%;
   height: 20rem;
   background-color: white;
   margin: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .section-text {
   margin-top: 1rem;
-  text-align: center;
+  background-color: rgba(225, 225, 225, 0.4823529412);
+  height: 12rem;
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.category-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: rgba(225, 225, 225, 0.4823529412);
+}
+
+.add-to-img {
+  width: 3rem;
+  pointer-events: none;
+}
+
+.img-link {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
 }
 
 /*# sourceMappingURL=style.css.map */

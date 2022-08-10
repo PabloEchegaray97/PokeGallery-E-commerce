@@ -22,12 +22,13 @@
               
               <li><a href="#">link</a></li>
               <li><a href="#">link</a></li>
-              <div class="cart">
+              <a class="cart" id="open">
                   <img src="assets/img/bx-cart.svg" alt="" class="cart-img">
-                  <div class="cart-total">0</div>
-              </div>
+                  <span class="cart-total">0</span>
+              </a>
           </ul>
       </nav>
+      
   </header>
   <main>
     <div class="hero">
@@ -36,17 +37,37 @@
         </div>
       </img>
     </div>
-    <section class="categories">
-      <div class="categories-item"></div>
-      <div class="categories-item"></div>
-      <div class="categories-item"></div>
+    <section class="category">
+      <div class="category-item">
+        <a href="#"><h4 class="category-title">HOLO</h4></a>
+      </div>
+      <div class="category-item">
+        <a href="#"><h4 class="category-title">ART</h4></a>
+      </div>
+      <div class="category-item">
+        <a href="#"><h4 class="category-title">MISC</h4></a>
+      </div>
     </section>
-    <h4 class="section-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h4>
+    <p class="section-text"> <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit</span></p>
     <div class="container">
       <div id="lista-productos" class="lista-productos">
         
-    </div>
-      <div class="container cart">
+        <div class="card">
+          
+          <div class="img">
+            
+          <img class="img-item" src="assets/img/charizard.jpg" alt="">
+          </div>
+          <div class="card-text">
+          <span class="price-tag"><span>$</span></span>
+          <p class ="card-title">2231</p>
+          </div>
+          <button class="agregar-carrito add-to" id="${producto.id}">Adquirir<img src="assets/img/pokeballopen.png" class="add-to-img" id="2" alt=""></button>
+          
+        </div>
+      </div>
+      <img src="assets/img/pokeball.gif" alt="">
+      <div class="container cart" id="carrito-container">
           <div id="carrito" class="carrito">
             <table class="table" id="lista-carrito">
               <thead>
@@ -78,9 +99,23 @@
               >
                 Confirmar Compra
               </button>
-          </div>
+            </div>
+            
         </div>
       </div>
+      <p class="section-text"> <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit</span></p>
+      <section class="category">
+        <div class="category-item">
+          <a href="#"><h4 class="category-title">HOLO</h4></a>
+        </div>
+        <div class="category-item">
+          <a href="#"><h4 class="category-title">ART</h4></a>
+        </div>
+        <div class="category-item">
+          <a href="#"><h4 class="category-title">MISC</h4></a>
+        </div>
+      </section>
+      
   </main>
 
     <script src="assets/js/main.js"></script>
