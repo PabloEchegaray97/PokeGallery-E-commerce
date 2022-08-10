@@ -4,9 +4,10 @@ const contenedorCarrito = document.querySelector("#lista-carrito tbody");
 const vaciarCarritoBtn = document.querySelector("#vaciar-carrito");
 const listaProductos = document.querySelector("#lista-productos");
 let totalArticulos = document.querySelector(".cart-total");
+
 //nav
 window.addEventListener("scroll", function() {
-  var header = document.querySelector("header");
+  const header = document.querySelector("header");
   header.classList.toggle("sticky", window.scrollY>0);
 })
 
