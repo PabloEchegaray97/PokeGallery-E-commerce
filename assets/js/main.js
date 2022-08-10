@@ -89,8 +89,6 @@ function cargarEventListeners() {
   });
 
 }
-//FUNCIONES
-
 
 function agregarProducto(e) {
 
@@ -101,7 +99,6 @@ function agregarProducto(e) {
     leerDatosProducto(productoSeleccionado);
   }
 }
-
 
 function eliminarProducto(e) {
 
