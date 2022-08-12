@@ -322,4 +322,16 @@ a {
   height: 100%;
 }
 
+.mint {
+  display: flex;
+  background-color: rgba(120, 255, 86, 0.8588235294);
+  font-size: 1rem;
+  justify-content: center;
+  position: absolute;
+  color: #171717;
+  font-weight: 700;
+  border-radius: 2px;
+  right: 0;
+}
+
 /*# sourceMappingURL=style.css.map */

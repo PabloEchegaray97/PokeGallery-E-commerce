@@ -5,6 +5,9 @@ const vaciarCarritoBtn = document.querySelector("#vaciar-carrito");
 const listaProductos = document.querySelector("#lista-productos");
 let totalArticulos = document.querySelector(".cart-total");
 
+let totalEnCarrito ="";
+
+
 //nav
 window.addEventListener("scroll", function() {
   const header = document.querySelector("header");
@@ -13,72 +16,105 @@ window.addEventListener("scroll", function() {
 //modal
 
 
-carritoHTML()
-
+carritoHTML();
 console.log(typeof(articulosCarrito))
 
-const productos = [
-  {
-      id:1,
-      title:"Titulo 1",
-      img: "assets/img/charizard.jpg",
-      price: 1000,
-      cant:0,
-      stock:10,
-      off30:false,
-  },
-  {
-      id:2,
-      title:"Titulo 2",
-      img: "assets/img/charizard.jpg",
-      price: 1100,
-      cant:0,
-      stock:10,
-      off30:true,
-
-  },
-  {
-      id:3,
-      title:"Titulo 3",
-      img: "assets/img/charizard.jpg",
-      price: 1200,
-      cant:0,
-      stock:10,
-      off30:false,
-  },
-];
-
-productos.forEach((producto) => {
-  if (producto.off30) {
-    document.getElementById("lista-productos").innerHTML += `
-    <div class="card">
-          <div class="img">
-          <img class="img-item" src="${producto.img}" alt="">
-          </div>
-          <div class="off30"">30% OFF</div>
-          <div class="card-text">
-          <span class="price-tag"><span>$${producto.price}</span></span>
-          <p class ="card-title">${producto.title}</p>
-          </div>
-          <button class="agregar-carrito add-to" id="${producto.id}">Adquirir<img src="assets/img/pokeballopen.png" class="add-to-img" id="2" alt=""></button>
-          
-        </div>`;
+class Producto {
+  constructor(id,title,img,price,cant,descuento) {
+    this.id = id;
+    this.title = title;
+    this.img = img;
+    this.price = price;
+    this.cant = cant;
+    this.descuento = descuento;
   }
-  else {
-    document.getElementById("lista-productos").innerHTML += `
-    <div class="card">
-          <div class="img">
-          <img class="img-item" src="${producto.img}" alt="">
-          </div>
-          <div class="card-text">
-          <span class="price-tag"><span>$${producto.price}</span></span>
-          <p class ="card-title">${producto.title}</p>
-          </div>
-          <button class="agregar-carrito add-to" id="${producto.id}">Adquirir<img src="assets/img/pokeballopen.png" class="add-to-img" id="2" alt=""></button>
-          
-        </div>`;
+  calcularDesc() {
+    let desc = (this.price - (this.price * this.descuento)/100);
+    return desc;
   }
-});
+
+}
+
+const charizard = new Producto(1,"Charizard","assets/img/charizard.jpg", 1000, 0, 0);
+const squirtle = new Producto(2,"Squirtle","assets/img/squirtle.jpg", 1000, 0, 31);
+const pikachu = new Producto(3,"Pikachu","assets/img/pikachu.jpg", 2000, 0, 0);
+
+const charizardMint = {
+  ...charizard,
+  id:4,
+  title:"Charizard Mint",
+  price:2500,
+  mint:"MINT",
+}
+const productos = [charizard, squirtle, pikachu, charizardMint];
+const seleccionProductos = [,,a,b] = productos;
+const otrosProductos = [a,b];
+
+console.log(productos[1].calcularDesc());
+
+generarCards(productos, "lista-productos");
+generarCards(otrosProductos, "otros-productos");
+
+function generarCards (cards, identificador) {
+
+  cards.forEach((producto) => {
+    const {
+      id: cardId,
+      title: cardTitle,
+      img: cardImg,
+      price: cardPrice,
+      descuento: cardDesc,
+    
+    } = producto;
+
+    if( cards.length>3) {
+      producto.descuento > 0 ? (document.getElementById(identificador).innerHTML += `
+      <div class="card">
+            <div class="img">
+            <img class="img-item" src="${cardImg}" alt="">
+            </div>
+            <div class="off30">${cardDesc}% OFF</div>
+            <div class="card-text">
+            <span>$<span class="price-tag">${producto.calcularDesc()}</span></span>
+            <p class ="card-title">${cardTitle}</p>
+            </div>
+            <button class="agregar-carrito add-to" id="${cardId}">Adquirir<img src="assets/img/pokeballopen.png" class="add-to-img" id="2" alt=""></button>
+            
+          </div>`)
+          : document.getElementById(identificador).innerHTML += `
+          <div class="card">
+                <div class="img">
+                <img class="img-item" src="${cardImg}" alt="">
+                </div>
+                <div class="mint">${(producto?.mint||"") }</div>
+                <div class="card-text">
+                <span>$<span class="price-tag">${cardPrice}</span></span>
+                <p class ="card-title">${cardTitle}</p>
+                </div>
+                <button class="agregar-carrito add-to" id="${cardId}">Adquirir<img src="assets/img/pokeballopen.png" class="add-to-img" id="2" alt=""></button>
+                
+              </div>`;
+    }
+    else {
+      document.getElementById(identificador).innerHTML += `
+      <div class="card">
+                <div class="img">
+                <img class="img-item" src="${cardImg}" alt="">
+                </div>
+                <div class="mint">${(producto?.mint||"") }</div>
+                <div class="card-text">
+                <span>$<span class="price-tag">${cardPrice}</span></span>
+                <p class ="card-title">${cardTitle}</p>
+                </div>
+                
+              </div>`;
+    }
+  });
+}
+
+
+
+
 
 
 cargarEventListeners();
@@ -129,7 +165,6 @@ function leerDatosProducto(producto) {
     id: producto.querySelector("button").getAttribute("id"),
     cantidad: 1,
   };
-
   const existe = articulosCarrito.some((producto) => producto.id === infoProducto.id);
   if (existe) {
     const productos = articulosCarrito.map((producto) => {
@@ -142,12 +177,15 @@ function leerDatosProducto(producto) {
     });
     articulosCarrito = [...productos];
     localStorage.setItem("articulosCarrito",JSON.stringify(articulosCarrito));
+    
   } else {
 
     articulosCarrito = [...articulosCarrito, infoProducto];
     localStorage.setItem("articulosCarrito",JSON.stringify(articulosCarrito));
     
-  }
+  }  
+  console.log(infoProducto.precio);
+  console.log(totalEnCarrito);
   carritoHTML();
 }
 
