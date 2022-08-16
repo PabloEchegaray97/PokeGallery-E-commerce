@@ -22,13 +22,14 @@ ul {
 }
 header.sticky {
     padding:5px 100px;
-    background-color: rgb(234, 43, 43);
+    background-color: white;
+    border-bottom: .5px solid #f0f0f0;
 }
 header.sticky .logo {
     color:black;
 }
 header.sticky ul li a {
-    color: rgb(255, 255, 255);
+    color: black
 }
 header .logo {
     position: relative;
@@ -217,7 +218,8 @@ p {
     align-items: center;
 }
 .logo {
-    width: 16rem;
+    width: 15rem;
+    
 }
 .hero {
     width: 100vw;
@@ -249,10 +251,10 @@ p {
     }
    
     30% {
-        transform: translateX(250px) translateY(200px) rotate(20deg);
+        transform: translateX(350px) translateY(200px) rotate(30deg);
     }
     50% {
-        transform: translateY(10px) translateX(10px) rotate(-15deg);
+        transform: translateY(10px) translateX(10px) rotate(0deg);
     }
     100% {
         
@@ -352,7 +354,8 @@ a {
     -webkit-animation: jello-horizontal 0.5s both;
             animation: jello-horizontal 0.5s both;
   }
-  @-webkit-keyframes jello-horizontal {
+  
+  @keyframes jello-horizontal {
         0% {
           -webkit-transform: scale3d(1, 1, 1);
                 transform: scale3d(1, 1, 1);
