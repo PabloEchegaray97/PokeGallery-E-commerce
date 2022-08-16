@@ -217,27 +217,51 @@ p {
     align-items: center;
 }
 .logo {
-    width: 15rem;
+    width: 16rem;
 }
 .hero {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     display: flex;
-    
+    justify-content: center;
+    align-items: center;
 }
-.hero-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: relative;
-}
-.hero-text-container {
-    position: absolute;
+.container-img {
+    width: 100vw;
+    height: 100vh   ;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100vh;
+    overflow: hidden;
+}
+.hero-img {
+    
+    width: 20rem;
+    height: 20rem;
+    animation: pikachu 2.4s 1;
+    margin-top: 20rem;
+    
+}
+
+@keyframes pikachu {
+    0% {
+        transform: translateY(-100px) translateX(3000px) rotate(-130deg) ;
+    }
+   
+    30% {
+        transform: translateX(250px) translateY(200px) rotate(20deg);
+    }
+    50% {
+        transform: translateY(10px) translateX(10px) rotate(-15deg);
+    }
+    100% {
+        
+    }
+}
+
+.hero-text-container {
+    position: absolute;
+    
     z-index: 3;
     
 }
@@ -298,4 +322,74 @@ a {
     font-weight: 700;
     border-radius: 2px;
     right: 0;
+}
+.info {
+    margin-top: 4rem;
+    border: 2px solid black;
+    border-radius: .2rem;
+}
+.swal2-styled.swal2-confirm {
+    background-color: #ea2b2b !important;
+    outline: 2px solid black !important;
+    box-shadow: none !important;
+}
+.swal2-styled.swal2-cancel {
+    color:black !important;
+    background-color: white !important;
+    outline: 2px solid black;
+}
+.btn_animated{
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border-color: black;
+    height: 8mm;
+    width: 25%;
+    outline-style: none !important;
+    margin-left: 1cm;
+    margin-top: 1cm;
+  }
+  .btn_animated.animate {
+    -webkit-animation: jello-horizontal 0.5s both;
+            animation: jello-horizontal 0.5s both;
+  }
+  @-webkit-keyframes jello-horizontal {
+        0% {
+          -webkit-transform: scale3d(1, 1, 1);
+                transform: scale3d(1, 1, 1);
+        }
+        30% {
+          -webkit-transform: scale3d(1.25, 0.75, 1);
+                transform: scale3d(1.25, 0.75, 1);
+        }
+        40% {
+          -webkit-transform: scale3d(0.75, 1.25, 1);
+                transform: scale3d(0.75, 1.25, 1);
+        }
+        50% {
+          -webkit-transform: scale3d(1.15, 0.85, 1);
+                transform: scale3d(1.15, 0.85, 1);
+        }
+        65% {
+          -webkit-transform: scale3d(0.95, 1.05, 1);
+                transform: scale3d(0.95, 1.05, 1);
+        }
+        75% {
+          -webkit-transform: scale3d(1.05, 0.95, 1);
+                transform: scale3d(1.05, 0.95, 1);
+        }
+        100% {
+          -webkit-transform: scale3d(1, 1, 1);
+                transform: scale3d(1, 1, 1);
+        }
+    }
+
+.prueba {
+    display: flex;
+    width: 45px;
+    height: 49px;
+    background-image: url(../img/pokeballopenmin.png);
+    
+}
+.prueba2 {
+    background-image: url(../img/pokeballclosedmin.png);
 }
