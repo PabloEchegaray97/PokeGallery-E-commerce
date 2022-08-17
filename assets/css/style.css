@@ -378,20 +378,20 @@ a {
 
 .info {
   margin-top: 4rem;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 0.2rem;
 }
 
 .swal2-styled.swal2-confirm {
   background-color: #ea2b2b !important;
-  outline: 2px solid black !important;
+  outline: 1px solid black !important;
   box-shadow: none !important;
 }
 
 .swal2-styled.swal2-cancel {
   color: black !important;
   background-color: white !important;
-  outline: 2px solid black;
+  outline: 1px solid black;
 }
 
 .btn_animated {
