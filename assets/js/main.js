@@ -23,7 +23,7 @@ function generarCards(cards, identificador) {
           descuento: cardDesc,
 
       } = producto;
-      const idPokeball = `pokeball${cardId}` 
+      const idPokeball = `pokeball-${cardId}` 
       if (cards.length > 3) {
           if (producto.descuento > 0){ 
               (document.getElementById(identificador).innerHTML += `
@@ -36,7 +36,7 @@ function generarCards(cards, identificador) {
                   <span>$<span class="price-tag">${producto.calcularDesc()}</span></span>
                   <p class ="card-title">${cardTitle}</p>
                   </div>
-                  <button class="agregar-carrito add-to" id="${cardId}">Adquirir<div class="prueba" id="${idPokeball}"></div></button>
+                  <button class="agregar-carrito add-to" id="${cardId}">Adquirir<span class="prueba" id="${idPokeball}"></span></button>
                   
               </div>`)} 
           else {
@@ -50,7 +50,7 @@ function generarCards(cards, identificador) {
                   <span>$<span class="price-tag">${cardPrice}</span></span>
                   <p class ="card-title">${cardTitle}</p>
               </div>
-              <button class="agregar-carrito add-to" id="${cardId}">Adquirir<img src="assets/img/pokeballopen.png" class="add-to-img" id="2" alt=""></button>
+              <button class="agregar-carrito add-to" id="${cardId}">Adquirir<span class="prueba" id="${idPokeball}"></span></button>
               </div>`;
           }
       } else {
@@ -134,12 +134,14 @@ function agregarProducto(e) {
 
   if (e.target.classList.contains("agregar-carrito")) {
       const productoSeleccionado = e.target.parentElement;
+      console.log(productoSeleccionado);
       leerDatosProducto(productoSeleccionado);
       Toastify({
           text: "Producto agregado con éxito",
           className: "info",
           style: {
-            background: "#ea2b2b",
+            background: "#ffffff",
+            color:"#000000",
           }
         }).showToast();
         
@@ -153,7 +155,8 @@ function eliminarProducto(e) {
 
   if (e.target.classList.contains("borrar-producto")) {
       const productoID = e.target.getAttribute("id");
-
+      const pokeballID = `pokeball-${productoID}`
+      console.log(productoID);
       articulosCarrito = articulosCarrito.filter((producto) => producto.id !== productoID);
       localStorage.setItem("articulosCarrito", JSON.stringify(articulosCarrito));
       console.log(articulosCarrito);
@@ -162,10 +165,11 @@ function eliminarProducto(e) {
           text: "Producto eliminado con éxito",
           className: "info",
           style: {
-            background: "#ea2b2b",
+            background: "#ffffff",
+            color: "#000000",
           }
         }).showToast();
-        
+      document.getElementById(pokeballID).classList.remove("prueba2");
   }
 }
 
@@ -178,8 +182,9 @@ function leerDatosProducto(producto) {
       precio: producto.querySelector(".price-tag").innerText,
       id: producto.querySelector("button").getAttribute("id"),
       cantidad: 1,
+      pokeball: producto.querySelector(".prueba").getAttribute("id"),
   };
-
+  console.log(infoProducto);
   const existe = articulosCarrito.some((producto) => producto.id === infoProducto.id);
 
   if (existe) {
@@ -188,6 +193,7 @@ function leerDatosProducto(producto) {
               producto.cantidad++;
               return producto;
           } else {
+              document.getElementById(infoProducto.pokeball).classList.add("prueba2");
               return producto;
           }
       });
@@ -196,7 +202,7 @@ function leerDatosProducto(producto) {
       localStorage.setItem("articulosCarrito", JSON.stringify(articulosCarrito));
 
   } else {
-
+      document.getElementById(infoProducto.pokeball).classList.add("prueba2");
       articulosCarrito = [...articulosCarrito, infoProducto];
       localStorage.setItem("articulosCarrito", JSON.stringify(articulosCarrito));
       
@@ -273,10 +279,10 @@ console.log(productos[1].calcularDesc());
 generarCards(productos, "lista-productos");
 generarCards(otrosProductos, "otros-productos");
 
-const selector = document.querySelector('#pokeball2');
-selector.addEventListener('click', () => {
-  selector.classList.add('prueba2')
-});
+// const selector = document.querySelector('#pokeball');
+// selector.addEventListener('click', () => {
+//   selector.classList.add('prueba2')
+// });
 cargarEventListeners();
 
 const btn = document.querySelector('.btn_animated')
