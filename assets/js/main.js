@@ -21,10 +21,12 @@ function generarCards(cards, identificador) {
           img: cardImg,
           price: cardPrice,
           descuento: cardDesc,
+          pokeball: cardPoke,
 
       } = producto;
+      
+
       const idPokeball = `pokeball-${cardId}` 
-      if (cards.length > 3) {
           if (producto.descuento > 0){ 
               (document.getElementById(identificador).innerHTML += `
               <div class="card">
@@ -53,19 +55,6 @@ function generarCards(cards, identificador) {
               <button class="agregar-carrito add-to" id="${cardId}">Adquirir<span class="prueba" id="${idPokeball}"></span></button>
               </div>`;
           }
-      } else {
-          document.getElementById(identificador).innerHTML += `
-          <div class="card">
-              <div class="img">
-              <img class="img-item" src="${cardImg}" alt="">
-              </div>
-              <div class="mint">${(producto?.mint||"") }</div>
-              <div class="card-text">
-              <span>$<span class="price-tag">${cardPrice}</span></span>
-              <p class ="card-title">${cardTitle}</p>
-              </div>
-          </div>`;
-      }
   });
 }
 
@@ -88,6 +77,12 @@ function cargarEventListeners() {
               text: 'Agrega algunos productos :)',
               icon: 'success',
               confirmButtonText: 'Genial'
+          })
+          articulosCarrito.forEach((card) => {
+            const pokeballID = `pokeball-${card.id}`
+            console.log(pokeballID)
+            document.getElementById(pokeballID).classList.remove("prueba2");
+
           })
           articulosCarrito = [];
           localStorage.setItem("articulosCarrito", JSON.stringify(articulosCarrito));
@@ -158,6 +153,7 @@ function eliminarProducto(e) {
       const pokeballID = `pokeball-${productoID}`
       console.log(productoID);
       articulosCarrito = articulosCarrito.filter((producto) => producto.id !== productoID);
+      document.getElementById(pokeballID).classList.remove("prueba2");
       localStorage.setItem("articulosCarrito", JSON.stringify(articulosCarrito));
       console.log(articulosCarrito);
       carritoHTML();
@@ -169,7 +165,7 @@ function eliminarProducto(e) {
             color: "#000000",
           }
         }).showToast();
-      document.getElementById(pokeballID).classList.remove("prueba2");
+      
   }
 }
 
@@ -184,6 +180,7 @@ function leerDatosProducto(producto) {
       cantidad: 1,
       pokeball: producto.querySelector(".prueba").getAttribute("id"),
   };
+  document.getElementById(infoProducto.pokeball).classList.add("prueba2");
   console.log(infoProducto);
   const existe = articulosCarrito.some((producto) => producto.id === infoProducto.id);
 
@@ -193,7 +190,6 @@ function leerDatosProducto(producto) {
               producto.cantidad++;
               return producto;
           } else {
-              document.getElementById(infoProducto.pokeball).classList.add("prueba2");
               return producto;
           }
       });
@@ -202,7 +198,6 @@ function leerDatosProducto(producto) {
       localStorage.setItem("articulosCarrito", JSON.stringify(articulosCarrito));
 
   } else {
-      document.getElementById(infoProducto.pokeball).classList.add("prueba2");
       articulosCarrito = [...articulosCarrito, infoProducto];
       localStorage.setItem("articulosCarrito", JSON.stringify(articulosCarrito));
       
@@ -252,9 +247,9 @@ class Producto {
   }
 }
 
-const charizard = new Producto(1,"Charizard","assets/img/charizard.jpg", 1000, 0, 0);
-const squirtle = new Producto(2,"Squirtle","assets/img/squirtle.jpg", 1000, 0, 31);
-const pikachu = new Producto(3,"Pikachu","assets/img/pikachu.jpg", 2000, 0, 0);
+const charizard = new Producto(1,"Charizard","assets/img/charizard.jpg", 1000, 0, 0,);
+const squirtle = new Producto(2,"Squirtle","assets/img/squirtle.jpg", 1000, 0, 31,);
+const pikachu = new Producto(3,"Pikachu","assets/img/pikachu.jpg", 2000, 0, 0,);
 
 const charizardMint = {
   ...charizard,

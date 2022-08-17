@@ -80,7 +80,7 @@ body {
 /*tarjeta*/
 .card {
   height: 25rem;
-  width: 14rem;
+  max-width: 14rem;
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -196,6 +196,7 @@ p {
 .lista-productos {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .show-cart {
