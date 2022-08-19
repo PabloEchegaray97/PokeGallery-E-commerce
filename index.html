@@ -26,9 +26,10 @@
           <a href="#" class="logo"><img src="assets/img/logo2.png" alt="" class="logo"></a>
           <ul>
               
-              <li><a href="#">link</a></li>
-              <li><a href="#">link</a></li>
-              <a class="cart" id="open">
+              <li><a href="#">Cartas</a></li>
+              <li><a href="#">Accesorios</a></li>
+              <li><a href="#">Contacto</a></li>
+              <a class="cart hero__cta" id="open">
                   <img src="assets/img/bx-cart.svg" alt="" class="cart-img">
                   <span class="cart-total">0</span>
               </a>
@@ -79,69 +80,73 @@
           
         </div>
       </div>
-      <img src="assets/img/pokeball.gif" alt="">
-      <div class="container cart" id="carrito-container">
-          <div id="carrito" class="carrito">
-            <table class="table" id="lista-carrito">
-              <thead>
-                <tr>
-                  <th>Item</th>
-                  <th>Precio</th>
-                  <th>Cantidad</th>
-                  <th>Quitar</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row"></th>
-                </tr>
-              </tbody>
-            </table>
-            <div>
-              <button
-                type="button"
-                class="btn btn-outline-danger"
-                id="vaciar-carrito"
-              >
-                Vaciar Carrito
-              </button>
-              <button
-                type="button"
-                class="btn btn-outline-success"
-                id="confirmar-compra"
-              >
-                Confirmar Compra
-              </button>
-            </div>
-            
-        </div>
-      </div>
+    </div>
+      
+      
       <p class="section-text"> <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit</span></p>
-      <section class="category">
-        <div class="category-item">
-          <a href="#"><h4 class="category-title">HOLO</h4></a>
-        </div>
-        <div class="category-item">
-          <a href="#"><h4 class="category-title">ART</h4></a>
-        </div>
-        <div class="category-item">
-          <a href="#"><h4 class="category-title">MISC</h4></a>
-        </div>
-      </section>
+      
       <div id="otros-productos">
         <h4>Otros productos</h4>
       </div>
       <button class="btn_animated">CLICKEAME</button>
-      <div class="prueba">
-        
-      </div>
+      
+      <section class="modal ">
+        <div class="modal__container">
+          <p>¡Ya casi los tienes! Ve al checkout para rellenar tus datos</p>
+          <img src="assets/img/pokeball.gif" alt="">
+          <a href="#">Ir al checkout</a>
+          <div class="container cart" id="carrito-container">
+            <div id="carrito" class="carrito">
+              <table class="table" id="lista-carrito">
+                <thead>
+                  <tr>
+                    <th>Eliminar</th>
+                    <th>Item</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"></th>
+                  </tr>
+                </tbody>
+                <tr>
+                  <th>total</th>
+                  <th> </th>
+                  <th> </th>
+                  <th class="total-carrito">123213</th>
+                </tr>
+              </table>
+              
+              
+              <div>
+                <button
+                  type="button"
+                  class="btn btn-outline-danger"
+                  id="vaciar-carrito"
+                >
+                  Vaciar Carrito
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-success"
+                  id="confirmar-compra"
+                >
+                  Confirmar Compra
+                </button>
+              </div>
+              
+          </div>
+        </div>
+            
+            <a href="#" class="modal__close">Cerrar Modal</a>
+        </div>
+    </section>
+
   </main>
 
     <script src="assets/js/main.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-      crossorigin="anonymous"
-    ></script>
+    
   </body>
 </html>

@@ -5,7 +5,8 @@ const confimarCompraBtn = document.querySelector("#confirmar-compra");
 const listaProductos = document.querySelector("#lista-productos");
 let totalArticulos = document.querySelector(".cart-total");
 let articulosCarrito = JSON.parse(localStorage.getItem("articulosCarrito")) ?? [];
-
+let totalProducto;
+let totalCarrito=0;
 const nav = window.addEventListener("scroll", function() {
   const header = document.querySelector("header");
   header.classList.toggle("sticky", window.scrollY>0);
@@ -190,9 +191,12 @@ function leerDatosProducto(producto) {
               producto.cantidad++;
               return producto;
           } else {
+              
               return producto;
+              
           }
       });
+  
 
       articulosCarrito = [...productos];
       localStorage.setItem("articulosCarrito", JSON.stringify(articulosCarrito));
@@ -211,34 +215,41 @@ function leerDatosProducto(producto) {
 function carritoHTML() {
 
   limpiarHTML();
+  
   articulosCarrito.forEach((producto) => {
       const row = document.createElement("tr");
-      row.innerHTML = `<td>${producto.titulo}</td>
-      <td>${producto.precio}</td>
-      <td>${producto.cantidad}</td>
+      row.innerHTML = `
       <td>
       <a href="" class="borrar-producto" id="${producto.id}">x</a>
-      </td>`;
+      </td>
+      <td>${producto.titulo}</td>
+      <td>${producto.cantidad}</td>
+      <td>${producto.precio}</td>
+      `;
 
       contenedorCarrito.appendChild(row);
+      
       totalArticulos.textContent = articulosCarrito.length;
   });
+  console.log(totalCarrito)
+  
 }
 
 function limpiarHTML() {
   contenedorCarrito.innerHTML = "";
   totalArticulos.textContent = articulosCarrito.length;
+  calcularTotal();
 }
 
 carritoHTML();
 
 class Producto {
-  constructor(id,title,img,price,cant,descuento) {
+  constructor(id,title,img,price,cantidad,descuento) {
     this.id = id;
     this.title = title;
     this.img = img;
     this.price = price;
-    this.cant = cant;
+    this.cantidad = cantidad;
     this.descuento = descuento;
   }
   calcularDesc() {
@@ -286,3 +297,25 @@ btn.addEventListener('click', () => {
   setTimeout(() => btn.classList.add('animate'), 100)
 })
 
+const openModal = document.querySelector('.hero__cta');
+const modal = document.querySelector('.modal');
+const closeModal = document.querySelector('.modal__close');
+
+openModal.addEventListener('click', (e)=>{
+    e.preventDefault();
+    modal.classList.add('modal--show');
+});
+
+closeModal.addEventListener('click', (e)=>{
+    e.preventDefault();
+    modal.classList.remove('modal--show');
+});
+
+function calcularTotal(){
+  totalCarrito = 0;
+articulosCarrito.forEach((producto)=>{
+  totalCarrito =  (producto.precio* producto.cantidad) + totalCarrito;
+  console.log("total : "+totalCarrito);
+})
+  document.querySelector(".total-carrito").innerText = totalCarrito;
+}
