@@ -92,10 +92,9 @@
       
       <section class="modal ">
         <div class="modal__container">
-          <p>¡Ya casi los tienes! Ve al checkout para rellenar tus datos</p>
-          <img src="assets/img/pokeball.gif" alt="">
-          <a href="#">Ir al checkout</a>
-          <div class="container cart" id="carrito-container">
+          
+          
+          <div class="container cart-container" id="carrito-container">
             <div id="carrito" class="carrito">
               <table class="table" id="lista-carrito">
                 <thead>
@@ -112,7 +111,7 @@
                   </tr>
                 </tbody>
                 <tr>
-                  <th>total</th>
+                  <th>Total</th>
                   <th> </th>
                   <th> </th>
                   <th class="total-carrito">123213</th>
@@ -120,27 +119,29 @@
               </table>
               
               
-              <div>
+              <div class="cart-buttons">
                 <button
                   type="button"
-                  class="btn btn-outline-danger"
+                  class="modal__button modal__button--mod"
                   id="vaciar-carrito"
                 >
                   Vaciar Carrito
                 </button>
                 <button
                   type="button"
-                  class="btn btn-outline-success"
+                  class="modal__button"
                   id="confirmar-compra"
                 >
-                  Confirmar Compra
+                  Ir al carrito
                 </button>
               </div>
               
           </div>
+          
         </div>
-            
-            <a href="#" class="modal__close">Cerrar Modal</a>
+        <img src="assets/img/pokeball.gif" alt="" class="modal__gif">
+        <p class="modal__text">¡Ya casi los tienes!</p>
+            <a href="#" class="modal__close">X</a>
         </div>
     </section>
 

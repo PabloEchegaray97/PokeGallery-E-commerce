@@ -248,11 +248,11 @@ p {
 
 @keyframes pikachu {
     0% {
-        transform: translateY(-100px) translateX(3000px) rotate(-130deg) ;
+        transform: translateY(-30vh) translateX(150vw) rotate(-130deg) ;
     }
    
     30% {
-        transform: translateX(350px) translateY(200px) rotate(30deg);
+        transform: translateX(30vw) translateY(20vh) rotate(30deg);
     }
     50% {
         transform: translateY(10px) translateX(10px) rotate(0deg);
@@ -269,7 +269,8 @@ p {
     
 }
 .carrito {
-    margin: 1rem;
+    margin-top: 4rem;
+
 }
 .category {
     display: flex;
@@ -283,7 +284,7 @@ p {
     border: 2px solid #e1e1e17b;
     border-radius: 2px;
     width: 30%;
-    height: 18rem;
+    height: 20rem;
     background-color: white;
     display: flex;
     align-items: center;
@@ -353,13 +354,12 @@ a {
 }
 .swal2-styled.swal2-confirm {
     background-color: #ea2b2b !important;
-    outline: 1px solid black !important;
+   
     box-shadow: none !important;
 }
 .swal2-styled.swal2-cancel {
     color:black !important;
-    background-color: white !important;
-    outline: 1px solid black;
+    background-color: rgb(230, 230, 230) !important;
 }
 .btn_animated{
     background-color: rgba(0,0,0,0.5);
@@ -446,20 +446,61 @@ a {
 }
 
 .modal__container{
-    z-index: 10;
-    width: 90%;
-    max-width: 600px;
-    max-height: 90%;
-    background-color: #fff;
-    border-radius: 6px;
-    padding: 3em 2.5em;
     
-    grid-auto-columns: 100%;
+    z-index: 10;
+    width: 60%;
+    max-width: 600px;
+    max-height: 70%;
+    background-color: #fff;
+    -webkit-border-bottom-left-radius: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    border-bottom-left-radius: 10px;
+    
     transform: var(--transform);
     transition:var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+.modal__text {
+    font-size: 1.3rem;
+    margin: 0;
+}
+.modal__gif {
+    width: 5rem;
+    height: 5rem;
+    margin-top: 1rem;
+}
+.modal__button {
+    background-color: #ea2b2b;
+    color: white;
+    padding: 0.6rem;
+    border-radius: .3rem;
+    border: none;
+}
+.modal__button--mod {
+    background-color: rgb(230, 230, 230);
+    padding: .5rem;
+    margin-right: .5rem;
+    color: #000;
+    
+}
+.modal__close {
+    position: absolute;
+    color: #000;
+    right: 0;
+    padding: 1rem;
+    font-size: 2rem;
 
-
-
-
-
+}
+.cart-buttons {
+    display: flex;
+    justify-content: center;
+}
+.cart-container {
+    min-height: 80%;
+}
+.borrar-producto {
+    color: #000;
+    font-size: 1rem;
+}

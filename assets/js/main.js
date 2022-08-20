@@ -135,9 +135,13 @@ function agregarProducto(e) {
       Toastify({
           text: "Producto agregado con éxito",
           className: "info",
+          gravity: "bottom",
+          position: "right",
           style: {
             background: "#ffffff",
             color:"#000000",
+            text: "A simple warning alert—check it out!",
+            
           }
         }).showToast();
         
@@ -161,6 +165,8 @@ function eliminarProducto(e) {
       Toastify({
           text: "Producto eliminado con éxito",
           className: "info",
+          gravity: "bottom",
+          position: "right",
           style: {
             background: "#ffffff",
             color: "#000000",
