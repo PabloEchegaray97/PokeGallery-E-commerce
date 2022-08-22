@@ -6,11 +6,31 @@
   font-family: "Montserrat", sans-serif;
 }
 
+::selection {
+  background-color: #ea2b2b;
+  color: #ffffff;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
 header {
   position: fixed;
   width: 100%;
   transition: 0.6s;
   z-index: 4;
+}
+
+.logo {
+  width: 15rem;
 }
 
 nav {
@@ -70,14 +90,12 @@ header ul li a {
   transition: 0.6s;
 }
 
-body {
+.lista-productos {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 100vh;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-/*tarjeta*/
 .card {
   height: 25rem;
   max-width: 14rem;
@@ -168,69 +186,9 @@ p {
   transition: 0.1s;
 }
 
-.cart {
-  margin-right: 2rem;
-  cursor: pointer;
-}
-
-.cart-img {
-  position: absolute;
-  width: 40px;
-  bottom: -7px;
-}
-
-.cart-total {
-  display: flex;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  position: relative;
-  z-index: 10;
-  background-color: #000;
-  border-radius: 50%;
-  left: 21px;
-  color: white;
-  bottom: 10px;
-}
-
-.lista-productos {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.show-cart {
-  width: 100%;
-  height: 100vh;
-}
-
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 1rem;
-  border: 2px solid #8f8f8f;
-  border-radius: 0.3rem;
-  overflow: hidden;
-  background-color: white;
-}
-
-.detalle-img {
-  width: 6rem;
-  height: 5rem;
-  object-fit: cover;
-  margin-left: 1rem;
-}
-
-.detalle-producto {
-  display: flex;
-  align-items: center;
-}
-
-.detalle-producto-mod {
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: 1rem;
+.add-to-img {
+  width: 3rem;
+  pointer-events: none;
 }
 
 .card-title {
@@ -245,8 +203,34 @@ p {
   align-items: center;
 }
 
-.logo {
-  width: 15rem;
+.prueba {
+  display: inline-block;
+  width: 45px;
+  height: 49px;
+  background-image: url(../img/pokeballopenmin.png);
+  pointer-events: none;
+  transition: 0.1s;
+}
+
+.prueba2 {
+  background-image: url(../img/pokeballclosedmin.png);
+}
+
+.mint {
+  display: flex;
+  background-color: rgba(120, 255, 86, 0.8588235294);
+  font-size: 1rem;
+  justify-content: center;
+  position: absolute;
+  color: #171717;
+  font-weight: 700;
+  border-radius: 2px;
+  right: 0;
+}
+
+.hero-text-container {
+  position: absolute;
+  z-index: 3;
 }
 
 .hero {
@@ -282,13 +266,139 @@ p {
     transform: translateY(10px) translateX(10px) rotate(0deg);
   }
 }
-.hero-text-container {
+.cart {
+  margin-right: 2rem;
+  cursor: pointer;
+}
+
+.cart-img {
   position: absolute;
-  z-index: 3;
+  width: 40px;
+  bottom: -7px;
 }
 
 .carrito {
-  margin-top: 4rem;
+  padding-top: 4rem;
+  height: 80%;
+  width: 100%;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  z-index: 10;
+  background-color: #000;
+  border-radius: 50%;
+  left: 21px;
+  color: white;
+  bottom: 10px;
+}
+
+.show-cart {
+  width: 100%;
+  height: 100vh;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+  border: 2px solid #8f8f8f;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  background-color: white;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(17, 17, 17, 0.7411764706);
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s 0.3s;
+  --transform: translateY(-100vh);
+  --transition: transform .2s;
+}
+
+.modal--show {
+  opacity: 1;
+  pointer-events: unset;
+  transition: opacity 0.6s;
+  --transform: translateY(0);
+  --transition: transform .2s .2s;
+}
+
+.modal__container {
+  z-index: 10;
+  width: 60%;
+  max-width: 600px;
+  max-height: 70%;
+  background-color: #fff;
+  -webkit-border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  border-bottom-left-radius: 10px;
+  transform: var(--transform);
+  transition: var(--transition);
+}
+
+.modal__text {
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.modal__gif {
+  width: 5rem;
+  height: 5rem;
+}
+
+.modal__button {
+  background-color: #ea2b2b;
+  color: white;
+  padding: 0.6rem;
+  border-radius: 0.3rem;
+  border: none;
+}
+
+.modal__button--mod {
+  background-color: rgb(230, 230, 230);
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  color: #000;
+}
+
+.modal__close {
+  position: absolute;
+  color: #000;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  font-size: 2rem;
+}
+
+.cart-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.cart-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.borrar-producto {
+  color: #000;
+  font-size: 1rem;
 }
 
 .category {
@@ -347,39 +457,6 @@ p {
   align-items: center;
 }
 
-a {
-  text-decoration: none;
-}
-
-.add-to-img {
-  width: 3rem;
-  pointer-events: none;
-}
-
-.img-link {
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-}
-
-.mint {
-  display: flex;
-  background-color: rgba(120, 255, 86, 0.8588235294);
-  font-size: 1rem;
-  justify-content: center;
-  position: absolute;
-  color: #171717;
-  font-weight: 700;
-  border-radius: 2px;
-  right: 0;
-}
-
-.info {
-  margin-top: 4rem;
-  border: 1px solid black;
-  border-radius: 0.2rem;
-}
-
 .swal2-styled.swal2-confirm {
   background-color: #ea2b2b !important;
   box-shadow: none !important;
@@ -390,151 +467,10 @@ a {
   background-color: rgb(230, 230, 230) !important;
 }
 
-.btn_animated {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border-color: black;
-  height: 8mm;
-  width: 25%;
-  outline-style: none !important;
-  margin-left: 1cm;
-  margin-top: 1cm;
-}
-
-.btn_animated.animate {
-  -webkit-animation: jello-horizontal 0.5s both;
-  animation: jello-horizontal 0.5s both;
-}
-
-@keyframes jello-horizontal {
-  0% {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-  30% {
-    -webkit-transform: scale3d(1.25, 0.75, 1);
-    transform: scale3d(1.25, 0.75, 1);
-  }
-  40% {
-    -webkit-transform: scale3d(0.75, 1.25, 1);
-    transform: scale3d(0.75, 1.25, 1);
-  }
-  50% {
-    -webkit-transform: scale3d(1.15, 0.85, 1);
-    transform: scale3d(1.15, 0.85, 1);
-  }
-  65% {
-    -webkit-transform: scale3d(0.95, 1.05, 1);
-    transform: scale3d(0.95, 1.05, 1);
-  }
-  75% {
-    -webkit-transform: scale3d(1.05, 0.95, 1);
-    transform: scale3d(1.05, 0.95, 1);
-  }
-  100% {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-}
-.prueba {
-  display: inline-block;
-  width: 45px;
-  height: 49px;
-  background-image: url(../img/pokeballopenmin.png);
-  pointer-events: none;
-  transition: 0.1s;
-}
-
-.prueba2 {
-  background-image: url(../img/pokeballclosedmin.png);
-}
-
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(17, 17, 17, 0.7411764706);
-  display: flex;
-  justify-content: flex-end;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.1s 0.3s;
-  --transform: translateY(-100vh);
-  --transition: transform .2s;
-}
-
-.modal--show {
-  opacity: 1;
-  pointer-events: unset;
-  transition: opacity 0.6s;
-  --transform: translateY(0);
-  --transition: transform .2s .2s;
-}
-
-.modal__container {
-  z-index: 10;
-  width: 60%;
-  max-width: 600px;
-  max-height: 70%;
-  background-color: #fff;
-  -webkit-border-bottom-left-radius: 10px;
-  -moz-border-radius-bottomleft: 10px;
-  border-bottom-left-radius: 10px;
-  transform: var(--transform);
-  transition: var(--transition);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.modal__text {
-  font-size: 1.3rem;
-  margin: 0;
-}
-
-.modal__gif {
-  width: 5rem;
-  height: 5rem;
-  margin-top: 1rem;
-}
-
-.modal__button {
-  background-color: #ea2b2b;
-  color: white;
-  padding: 0.6rem;
-  border-radius: 0.3rem;
-  border: none;
-}
-
-.modal__button--mod {
-  background-color: rgb(230, 230, 230);
-  padding: 0.5rem;
-  margin-right: 0.5rem;
-  color: #000;
-}
-
-.modal__close {
-  position: absolute;
-  color: #000;
-  right: 0;
-  padding: 1rem;
-  font-size: 2rem;
-}
-
-.cart-buttons {
-  display: flex;
-  justify-content: center;
-}
-
-.cart-container {
-  min-height: 80%;
-}
-
-.borrar-producto {
-  color: #000;
-  font-size: 1rem;
+.info {
+  margin-top: 4rem;
+  border: 1px solid black;
+  border-radius: 0.2rem;
 }
 
 /*# sourceMappingURL=style.css.map */

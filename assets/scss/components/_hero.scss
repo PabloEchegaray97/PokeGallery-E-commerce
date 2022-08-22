@@ -1,0 +1,39 @@
+.hero-text-container {
+    position: absolute;
+    z-index: 3;
+}
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-img {
+    width: 100vw;
+    height: 100vh   ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.hero-img {
+    
+    width: 20rem;
+    height: 20rem;
+    animation: pikachu 2.4s 1;
+    margin-top: 20rem;
+    
+}
+@keyframes pikachu {
+    0% {
+        transform: translateY(-30vh) translateX(150vw) rotate(-130deg) ;
+    }
+    30% {
+        transform: translateX(30vw) translateY(20vh) rotate(30deg);
+    }
+    50% {
+        transform: translateY(10px) translateX(10px) rotate(0deg);
+    }
+    100% {
+        
+    }
+}

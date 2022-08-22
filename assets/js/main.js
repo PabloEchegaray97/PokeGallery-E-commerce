@@ -7,6 +7,10 @@ let totalArticulos = document.querySelector(".cart-total");
 let articulosCarrito = JSON.parse(localStorage.getItem("articulosCarrito")) ?? [];
 let totalProducto;
 let totalCarrito=0;
+
+let estadoCarrito = document.querySelector("#estado-carrito");
+
+
 const nav = window.addEventListener("scroll", function() {
   const header = document.querySelector("header");
   header.classList.toggle("sticky", window.scrollY>0);
@@ -219,7 +223,6 @@ function leerDatosProducto(producto) {
 }
 
 function carritoHTML() {
-
   limpiarHTML();
   
   articulosCarrito.forEach((producto) => {
@@ -238,12 +241,17 @@ function carritoHTML() {
       totalArticulos.textContent = articulosCarrito.length;
   });
   console.log(totalCarrito)
-  
+  if (articulosCarrito.length > 0) {
+    estadoCarrito.innerText = "¡Ya casi los tienes!";
+  document.querySelector("#modal-gif").src = "assets/img/pokeball.gif";
+  }
 }
 
 function limpiarHTML() {
   contenedorCarrito.innerHTML = "";
   totalArticulos.textContent = articulosCarrito.length;
+  estadoCarrito.innerText = "¡El carrito esta vacío!";
+  document.querySelector("#modal-gif").src = "assets/img/pokeball_static.png";
   calcularTotal();
 }
 
@@ -297,11 +305,7 @@ generarCards(otrosProductos, "otros-productos");
 // });
 cargarEventListeners();
 
-const btn = document.querySelector('.btn_animated')
-btn.addEventListener('click', () => {
-  btn.classList.remove('animate')
-  setTimeout(() => btn.classList.add('animate'), 100)
-})
+
 
 const openModal = document.querySelector('.hero__cta');
 const modal = document.querySelector('.modal');
@@ -325,3 +329,24 @@ articulosCarrito.forEach((producto)=>{
 })
   document.querySelector(".total-carrito").innerText = totalCarrito;
 }
+
+const buscarUnProducto = () => {
+  fetch('https://api.mercadolibre.com/sites/MLA/search?q=pokemon_original')
+  .then((response) => response.json())
+  .then(informacion=> {
+    let acumulador = ``;
+    informacion.results.forEach((producto) => {
+      console.log(producto);
+      acumulador += `
+      <div class="card">
+        <h6>${producto.title}</h6>
+        <h6>${producto.price}</h6>
+        <img src="${producto.thumbnail}">
+
+      </div>
+      `;
+      document.getElementById('seccion-card').innerHTML = acumulador;
+    })
+  })
+};
+buscarUnProducto();

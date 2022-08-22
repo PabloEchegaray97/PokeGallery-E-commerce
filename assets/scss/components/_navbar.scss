@@ -1,0 +1,59 @@
+header {
+    position: fixed;
+    width: 100%;
+    transition: 0.6s;
+    z-index: 4;
+
+}
+.logo {
+    width: 15rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ul {
+    margin: 0;
+}
+header.sticky {
+    padding:5px 100px;
+    background-color: white;
+    border-bottom: .5px solid #f0f0f0;
+}
+header.sticky .logo {
+    color:black;
+}
+header.sticky ul li a {
+    color: black
+}
+header .logo {
+    position: relative;
+    font-weight: 700;
+    color: #000;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: .6s;
+    margin-left: 1rem;
+}
+header ul {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header ul li {
+    position: relative;
+    list-style: none;
+}
+header ul li a {
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: #000;
+    letter-spacing: 2px;
+    font-weight: 500;
+    transition: .6s;
+}
