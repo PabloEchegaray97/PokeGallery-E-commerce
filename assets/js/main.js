@@ -11,6 +11,74 @@ let totalCarrito=0;
 let estadoCarrito = document.querySelector("#estado-carrito");
 
 
+
+const apiKey = '0a62f8bc-55ae-4e7f-86fe-49da8aaf6ca9'
+
+const customFetch = async (method, url) => { 
+  const fetchResponse = fetch(
+    url,
+    {
+      method: method, 
+      headers: {
+        'X-Api-Key': apiKey,
+        'Content-Type': 'application/json' 
+      },
+      
+    }
+  );
+  return fetchResponse ;
+}
+
+const getPokemonCard = async (id) => {
+  const url = `https://api.pokemontcg.io/v2/cards/${id}`
+  const response = await customFetch('GET', url);
+  
+  const card = await response.json(); 
+  return card.data;
+}
+
+const getAllPokemonCards = async () => {
+  const url = `https://api.pokemontcg.io/v2/cards`;
+  const response = await customFetch('GET', url);
+  const jsonResponse  = await response.json();
+  const cards = jsonResponse.data;
+  return cards;
+}
+
+
+const main = async () => {
+  const id = 'base1-4';
+  const card = await getPokemonCard(id);
+  const cards = await getAllPokemonCards();
+  let cont=0;
+  let acc = ``;
+  cards.forEach(element => {
+    
+    acc += `
+              <div class="card">
+                  <div class="img">
+                  <img class="img-item" src="${element.images.small}" alt="">
+                  </div>
+                  <div class="card-text">
+                  <span>$<span class="price-tag">${element.cardmarket.prices.averageSellPrice}</span></span>
+                  <p class ="card-title">${element.name}</p>
+                  </div>
+                  <button class="agregar-carrito add-to" id="${element.id}">Próximamente</button>
+                  
+              </div>
+  `;
+    
+    cont++;
+    if (cont == 5) {
+      document.getElementById("app").innerHTML = acc;
+      return;
+    }
+  });
+}
+
+main();
+
+
 const nav = window.addEventListener("scroll", function() {
   const header = document.querySelector("header");
   header.classList.toggle("sticky", window.scrollY>0);
@@ -26,7 +94,7 @@ function generarCards(cards, identificador) {
           img: cardImg,
           price: cardPrice,
           descuento: cardDesc,
-          pokeball: cardPoke,
+          
 
       } = producto;
       
@@ -272,7 +340,7 @@ class Producto {
   }
 }
 
-const charizard = new Producto(1,"Charizard","assets/img/charizard.jpg", 1000, 0, 0,);
+const charizard = new Producto(1,"Charizard","assets/img/charizard.png", 1000, 0, 0,);
 const squirtle = new Producto(2,"Squirtle","assets/img/squirtle.jpg", 1000, 0, 31,);
 const pikachu = new Producto(3,"Pikachu","assets/img/pikachu.jpg", 2000, 0, 0,);
 
@@ -285,26 +353,11 @@ const charizardMint = {
 }
 
 const productos = [charizard, squirtle, pikachu, charizardMint];
-const [,b,,d] = productos;
-let otrosProductos = [b,d]
-
-
-
-
-
-console.log(b);
-console.log(d);
 
 console.log(productos[1].calcularDesc());
 generarCards(productos, "lista-productos");
-generarCards(otrosProductos, "otros-productos");
 
-// const selector = document.querySelector('#pokeball');
-// selector.addEventListener('click', () => {
-//   selector.classList.add('prueba2')
-// });
 cargarEventListeners();
-
 
 
 const openModal = document.querySelector('.hero__cta');
@@ -330,23 +383,23 @@ articulosCarrito.forEach((producto)=>{
   document.querySelector(".total-carrito").innerText = totalCarrito;
 }
 
-const buscarUnProducto = () => {
-  fetch('https://api.mercadolibre.com/sites/MLA/search?q=pokemon_original')
-  .then((response) => response.json())
-  .then(informacion=> {
-    let acumulador = ``;
-    informacion.results.forEach((producto) => {
-      console.log(producto);
-      acumulador += `
-      <div class="card">
-        <h6>${producto.title}</h6>
-        <h6>${producto.price}</h6>
-        <img src="${producto.thumbnail}">
+// const buscarUnProducto = () => {
+//   fetch('https://api.mercadolibre.com/sites/MLA/search?q=pokemon_original')
+//   .then((response) => response.json())
+//   .then(informacion=> {
+//     let acumulador = ``;
+//     informacion.results.forEach((producto) => {
+//       console.log(producto);
+//       acumulador += `
+//       <div class="card">
+//         <h6>${producto.title}</h6>
+//         <h6>${producto.price}</h6>
+//         <img src="${producto.thumbnail}">
 
-      </div>
-      `;
-      document.getElementById('seccion-card').innerHTML = acumulador;
-    })
-  })
-};
-buscarUnProducto();
+//       </div>
+//       `;
+//       document.getElementById('seccion-card').innerHTML = acumulador;
+//     })
+//   })
+// };
+// buscarUnProducto();

@@ -9,3 +9,8 @@
 @import './components/cart';
 @import './components/categories';
 @import './components/toastify&sweetalert';
+
+
+.app {
+    display: flex;
+}

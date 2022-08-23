@@ -473,4 +473,8 @@ p {
   border-radius: 0.2rem;
 }
 
+.app {
+  display: flex;
+}
+
 /*# sourceMappingURL=style.css.map */

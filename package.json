@@ -1,9 +1,21 @@
 {
+"name": "pablito",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo "Error: no test specified" && exit 1"
+  },
+  "author": "pablo",
+  "license": "ISC",
+{
   "devDependencies": {
     "node-sass": "^7.0.1",
     "nodemon": "^2.0.19"
   },
   "dependencies": {
+    "pokemontcgsdk": "^2.0.0",
     "sass": "^1.54.4"
   }
 }
