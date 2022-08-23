@@ -383,23 +383,3 @@ articulosCarrito.forEach((producto)=>{
   document.querySelector(".total-carrito").innerText = totalCarrito;
 }
 
-// const buscarUnProducto = () => {
-//   fetch('https://api.mercadolibre.com/sites/MLA/search?q=pokemon_original')
-//   .then((response) => response.json())
-//   .then(informacion=> {
-//     let acumulador = ``;
-//     informacion.results.forEach((producto) => {
-//       console.log(producto);
-//       acumulador += `
-//       <div class="card">
-//         <h6>${producto.title}</h6>
-//         <h6>${producto.price}</h6>
-//         <img src="${producto.thumbnail}">
-
-//       </div>
-//       `;
-//       document.getElementById('seccion-card').innerHTML = acumulador;
-//     })
-//   })
-// };
-// buscarUnProducto();
