@@ -3,6 +3,7 @@ const contenedorCarrito = document.querySelector("#lista-carrito tbody");
 const vaciarCarritoBtn = document.querySelector("#vaciar-carrito");
 const confimarCompraBtn = document.querySelector("#confirmar-compra");
 const listaProductos = document.querySelector("#lista-productos");
+const listaProductos2 = document.querySelector("#app");
 let totalArticulos = document.querySelector(".cart-total");
 let articulosCarrito = JSON.parse(localStorage.getItem("articulosCarrito")) ?? [];
 let totalProducto;
@@ -50,9 +51,9 @@ const main = async () => {
   const id = 'base1-4';
   const card = await getPokemonCard(id);
   const cards = await getAllPokemonCards();
-  let cont=0;
   let acc = ``;
   cards.forEach(element => {
+    const idPokeball = `pokeball-${element.id}`;
     
     acc += `
               <div class="card">
@@ -63,17 +64,12 @@ const main = async () => {
                   <span>$<span class="price-tag">${element.cardmarket.prices.averageSellPrice}</span></span>
                   <p class ="card-title">${element.name}</p>
                   </div>
-                  <button class="agregar-carrito add-to" id="${element.id}">Próximamente</button>
+                  <button class="agregar-carrito add-to" id="${element.id}"><span class="prueba" id="${idPokeball}"></span>Adquirir</button>
                   
               </div>
   `;
-    
-    cont++;
-    if (cont == 5) {
-      document.getElementById("app").innerHTML = acc;
-      return;
-    }
-  });
+});
+document.getElementById("app").innerHTML = acc;
 }
 
 main();
@@ -133,7 +129,9 @@ function generarCards(cards, identificador) {
 
 function cargarEventListeners() {
   listaProductos.addEventListener("click", agregarProducto);
+  listaProductos2.addEventListener("click", agregarProducto);
   carrito.addEventListener("click", eliminarProducto);
+  
 
   vaciarCarritoBtn.addEventListener("click", () => {
       
@@ -151,17 +149,22 @@ function cargarEventListeners() {
               icon: 'success',
               confirmButtonText: 'Genial'
           })
+          console.log("else")
+
           articulosCarrito.forEach((card) => {
             const pokeballID = `pokeball-${card.id}`
             console.log(pokeballID)
             document.getElementById(pokeballID).classList.remove("prueba2");
 
           })
+
+
           articulosCarrito = [];
           localStorage.setItem("articulosCarrito", JSON.stringify(articulosCarrito));
           limpiarHTML();
       }
   });
+  
   confimarCompraBtn.addEventListener("click", () => {
       if (articulosCarrito.length==0) {
           Swal.fire({
