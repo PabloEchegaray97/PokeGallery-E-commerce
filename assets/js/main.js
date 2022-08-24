@@ -1,15 +1,15 @@
-const carrito = document.querySelector("#carrito");
-const contenedorCarrito = document.querySelector("#lista-carrito tbody");
-const vaciarCarritoBtn = document.querySelector("#vaciar-carrito");
-const confimarCompraBtn = document.querySelector("#confirmar-compra");
-const listaProductos = document.querySelector("#lista-productos");
-const listaProductos2 = document.querySelector("#app");
-let totalArticulos = document.querySelector(".cart-total");
-let articulosCarrito = JSON.parse(localStorage.getItem("articulosCarrito")) ?? [];
-let totalProducto;
-let totalCarrito=0;
+const cart = document.querySelector("#carrito");
+const cartContainer = document.querySelector("#lista-carrito tbody");
+const emptyCartBtn = document.querySelector("#vaciar-carrito");
+const confirmBuyBtn = document.querySelector("#confirmar-compra");
+const productList = document.querySelector("#lista-productos");
+const productList2 = document.querySelector("#app");
+let totalArticles = document.querySelector(".cart-total");
+let inCart = JSON.parse(localStorage.getItem("inCart")) ?? [];
 
-let estadoCarrito = document.querySelector("#estado-carrito");
+let cartTotal=0;
+
+let cartStatus = document.querySelector("#estado-carrito");
 
 
 
@@ -81,9 +81,9 @@ const nav = window.addEventListener("scroll", function() {
 })
 
 
-function generarCards(cards, identificador) {
+function generateCards(cards, identificador) {
 
-  cards.forEach((producto) => {
+  cards.forEach((product) => {
       const {
           id: cardId,
           title: cardTitle,
@@ -92,11 +92,11 @@ function generarCards(cards, identificador) {
           descuento: cardDesc,
           
 
-      } = producto;
+      } = product;
       
 
       const idPokeball = `pokeball-${cardId}` 
-          if (producto.descuento > 0){ 
+          if (product.descuento > 0){ 
               (document.getElementById(identificador).innerHTML += `
               <div class="card">
                   <div class="img">
@@ -104,7 +104,7 @@ function generarCards(cards, identificador) {
                   </div>
                   <div class="off30">${cardDesc}% OFF</div>
                   <div class="card-text">
-                  <span>$<span class="price-tag">${producto.calcularDesc()}</span></span>
+                  <span>$<span class="price-tag">${product.calculateDesc()}</span></span>
                   <p class ="card-title">${cardTitle}</p>
                   </div>
                   <button class="agregar-carrito add-to" id="${cardId}">Adquirir<span class="prueba" id="${idPokeball}"></span></button>
@@ -116,7 +116,7 @@ function generarCards(cards, identificador) {
                   <div class="img">
                   <img class="img-item" src="${cardImg}" alt="">
                   </div>
-                  <div class="mint">${(producto?.mint||"") }</div>
+                  <div class="mint">${(product?.mint||"") }</div>
                   <div class="card-text">
                   <span>$<span class="price-tag">${cardPrice}</span></span>
                   <p class ="card-title">${cardTitle}</p>
@@ -127,15 +127,15 @@ function generarCards(cards, identificador) {
   });
 }
 
-function cargarEventListeners() {
-  listaProductos.addEventListener("click", agregarProducto);
-  listaProductos2.addEventListener("click", agregarProducto);
-  carrito.addEventListener("click", eliminarProducto);
+function loadEventListeners() {
+  productList.addEventListener("click", addProduct);
+  productList2.addEventListener("click", addProduct);
+  cart.addEventListener("click", deleteProduct);
   
 
-  vaciarCarritoBtn.addEventListener("click", () => {
+  emptyCartBtn.addEventListener("click", () => {
       
-      if (articulosCarrito.length==0) {
+      if (inCart.length==0) {
           Swal.fire({
               title: 'El carrito esta vacio',
               text: 'Agrega algunos productos :)',
@@ -151,7 +151,7 @@ function cargarEventListeners() {
           })
           console.log("else")
 
-          articulosCarrito.forEach((card) => {
+          inCart.forEach((card) => {
             const pokeballID = `pokeball-${card.id}`
             console.log(pokeballID)
             document.getElementById(pokeballID).classList.remove("prueba2");
@@ -159,14 +159,14 @@ function cargarEventListeners() {
           })
 
 
-          articulosCarrito = [];
-          localStorage.setItem("articulosCarrito", JSON.stringify(articulosCarrito));
-          limpiarHTML();
+          inCart = [];
+          localStorage.setItem("inCart", JSON.stringify(inCart));
+          cleanHTML();
       }
   });
   
-  confimarCompraBtn.addEventListener("click", () => {
-      if (articulosCarrito.length==0) {
+  confirmBuyBtn.addEventListener("click", () => {
+      if (inCart.length==0) {
           Swal.fire({
               title: 'El carrito esta vacio',
               text: 'Agrega algunos productos :)',
@@ -189,9 +189,9 @@ function cargarEventListeners() {
                   Swal.fire(
                   '¡Gracias por tu compra!'
                   )
-                  articulosCarrito = [];
-                  localStorage.setItem("articulosCarrito", JSON.stringify(articulosCarrito));
-                  limpiarHTML();
+                  inCart = [];
+                  localStorage.setItem("inCart", JSON.stringify(inCart));
+                  cleanHTML();
               }
               })
       }
@@ -199,14 +199,14 @@ function cargarEventListeners() {
   });
 }
 
-function agregarProducto(e) {
+function addProduct(e) {
 
   e.preventDefault();
 
   if (e.target.classList.contains("agregar-carrito")) {
-      const productoSeleccionado = e.target.parentElement;
-      console.log(productoSeleccionado);
-      leerDatosProducto(productoSeleccionado);
+      const selectedProduct = e.target.parentElement;
+      console.log(selectedProduct);
+      readProductData(selectedProduct);
       Toastify({
           text: "Producto agregado con éxito",
           className: "info",
@@ -224,19 +224,19 @@ function agregarProducto(e) {
   }
 }
 
-function eliminarProducto(e) {
+function deleteProduct(e) {
 
   e.preventDefault();
 
   if (e.target.classList.contains("borrar-producto")) {
-      const productoID = e.target.getAttribute("id");
-      const pokeballID = `pokeball-${productoID}`
-      console.log(productoID);
-      articulosCarrito = articulosCarrito.filter((producto) => producto.id !== productoID);
+      const productID = e.target.getAttribute("id");
+      const pokeballID = `pokeball-${productID}`
+      console.log(productID);
+      inCart = inCart.filter((product) => product.id !== productID);
       document.getElementById(pokeballID).classList.remove("prueba2");
-      localStorage.setItem("articulosCarrito", JSON.stringify(articulosCarrito));
-      console.log(articulosCarrito);
-      carritoHTML();
+      localStorage.setItem("inCart", JSON.stringify(inCart));
+      console.log(inCart);
+      cartHTML();
       Toastify({
           text: "Producto eliminado con éxito",
           className: "info",
@@ -252,100 +252,100 @@ function eliminarProducto(e) {
 }
 
 
-function leerDatosProducto(producto) {
+function readProductData(product) {
 
-  const infoProducto = {
-      imagen: producto.querySelector("img").src,
-      titulo: producto.querySelector(".card-title").innerText,
-      precio: producto.querySelector(".price-tag").innerText,
-      id: producto.querySelector("button").getAttribute("id"),
-      cantidad: 1,
-      pokeball: producto.querySelector(".prueba").getAttribute("id"),
+  const productInfo = {
+      imagen: product.querySelector("img").src,
+      title: product.querySelector(".card-title").innerText,
+      price: product.querySelector(".price-tag").innerText,
+      id: product.querySelector("button").getAttribute("id"),
+      amount: 1,
+      pokeball: product.querySelector(".prueba").getAttribute("id"),
   };
-  document.getElementById(infoProducto.pokeball).classList.add("prueba2");
-  console.log(infoProducto);
-  const existe = articulosCarrito.some((producto) => producto.id === infoProducto.id);
+  document.getElementById(productInfo.pokeball).classList.add("prueba2");
+  console.log(productInfo);
+  const exist = inCart.some((product) => product.id === productInfo.id);
 
-  if (existe) {
-      const productos = articulosCarrito.map((producto) => {
-          if (producto.id === infoProducto.id) {
-              producto.cantidad++;
-              return producto;
+  if (exist) {
+      const products = inCart.map((product) => {
+          if (product.id === productInfo.id) {
+              product.amount++;
+              return product;
           } else {
               
-              return producto;
+              return product;
               
           }
       });
   
 
-      articulosCarrito = [...productos];
-      localStorage.setItem("articulosCarrito", JSON.stringify(articulosCarrito));
+      inCart = [...products];
+      localStorage.setItem("inCart", JSON.stringify(inCart));
 
   } else {
-      articulosCarrito = [...articulosCarrito, infoProducto];
-      localStorage.setItem("articulosCarrito", JSON.stringify(articulosCarrito));
+      inCart = [...inCart, productInfo];
+      localStorage.setItem("inCart", JSON.stringify(inCart));
       
 
   }
-  console.log(infoProducto.precio);
+  console.log(productInfo.price);
   
-  carritoHTML();
+  cartHTML();
 }
 
-function carritoHTML() {
-  limpiarHTML();
+function cartHTML() {
+  cleanHTML();
   
-  articulosCarrito.forEach((producto) => {
+  inCart.forEach((product) => {
       const row = document.createElement("tr");
       row.innerHTML = `
       <td>
-      <a href="" class="borrar-producto" id="${producto.id}">x</a>
+      <a href="" class="borrar-producto" id="${product.id}">x</a>
       </td>
-      <td>${producto.titulo}</td>
-      <td>${producto.cantidad}</td>
-      <td>${producto.precio}</td>
+      <td>${product.title}</td>
+      <td>${product.amount}</td>
+      <td>${product.price}</td>
       `;
 
-      contenedorCarrito.appendChild(row);
+      cartContainer.appendChild(row);
       
-      totalArticulos.textContent = articulosCarrito.length;
+      totalArticles.textContent = inCart.length;
   });
-  console.log(totalCarrito)
-  if (articulosCarrito.length > 0) {
-    estadoCarrito.innerText = "¡Ya casi los tienes!";
+  console.log(cartTotal)
+  if (inCart.length > 0) {
+    cartStatus.innerText = "¡Ya casi los tienes!";
   document.querySelector("#modal-gif").src = "assets/img/pokeball.gif";
   }
 }
 
-function limpiarHTML() {
-  contenedorCarrito.innerHTML = "";
-  totalArticulos.textContent = articulosCarrito.length;
-  estadoCarrito.innerText = "¡El carrito esta vacío!";
+function cleanHTML() {
+  cartContainer.innerHTML = "";
+  totalArticles.textContent = inCart.length;
+  cartStatus.innerText = "¡El carrito esta vacío!";
   document.querySelector("#modal-gif").src = "assets/img/pokeball_static.png";
-  calcularTotal();
+  calculateTotal();
 }
 
-carritoHTML();
+cartHTML();
 
-class Producto {
-  constructor(id,title,img,price,cantidad,descuento) {
+class Product {
+  constructor(id,title,img,price,amount,descuento) {
     this.id = id;
     this.title = title;
     this.img = img;
     this.price = price;
-    this.cantidad = cantidad;
+    this.amount = amount;
     this.descuento = descuento;
   }
-  calcularDesc() {
+  calculateDesc() {
     let desc = (this.price - (this.price * this.descuento)/100);
     return desc;
   }
 }
 
-const charizard = new Producto(1,"Charizard","assets/img/charizard.png", 1000, 0, 0,);
-const squirtle = new Producto(2,"Squirtle","assets/img/squirtle.jpg", 1000, 0, 31,);
-const pikachu = new Producto(3,"Pikachu","assets/img/pikachu.jpg", 2000, 0, 0,);
+const charizard = new Product(1,"Charizard","assets/img/charizard.png", 1000, 0, 0,);
+const squirtle = new Product(2,"Squirtle","assets/img/squirtle.jpg", 1000, 0, 31,);
+const pikachu = new Product(3,"Pikachu","assets/img/pikachu.jpg", 2000, 0, 0,);
 
 const charizardMint = {
   ...charizard,
@@ -355,12 +355,12 @@ const charizardMint = {
   mint:"MINT",
 }
 
-const productos = [charizard, squirtle, pikachu, charizardMint];
+const products = [charizard, squirtle, pikachu, charizardMint];
 
-console.log(productos[1].calcularDesc());
-generarCards(productos, "lista-productos");
+console.log(products[1].calculateDesc());
+generateCards(products, "lista-productos");
 
-cargarEventListeners();
+loadEventListeners();
 
 
 const openModal = document.querySelector('.hero__cta');
@@ -377,12 +377,12 @@ closeModal.addEventListener('click', (e)=>{
     modal.classList.remove('modal--show');
 });
 
-function calcularTotal(){
-  totalCarrito = 0;
-articulosCarrito.forEach((producto)=>{
-  totalCarrito =  (producto.precio* producto.cantidad) + totalCarrito;
-  console.log("total : "+totalCarrito);
+function calculateTotal(){
+  cartTotal = 0;
+inCart.forEach((product)=>{
+  cartTotal =  (product.price* product.amount) + cartTotal;
+  console.log("total : "+cartTotal);
 })
-  document.querySelector(".total-carrito").innerText = totalCarrito;
+  document.querySelector(".total-carrito").innerText = cartTotal;
 }
 
