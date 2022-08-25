@@ -54,14 +54,15 @@ const main = async () => {
   let acc = ``;
   cards.forEach(element => {
     const idPokeball = `pokeball-${element.id}`;
-    
+    console.log(element.rarity)
+    console.log(element)
     acc += `
               <div class="card">
                   <div class="img">
                   <img class="img-item" src="${element.images.small}" alt="">
                   </div>
                   <div class="card-text">
-                  <span>$<span class="price-tag">${element.cardmarket.prices.averageSellPrice}</span></span>
+                  <span>$<span class="price-tag">${element.cardmarket.prices.trendPrice}</span></span>
                   <p class ="card-title">${element.name}</p>
                   </div>
                   <button class="agregar-carrito add-to" id="${element.id}"><span class="prueba" id="${idPokeball}"></span>Adquirir</button>
