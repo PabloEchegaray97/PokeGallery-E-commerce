@@ -38,8 +38,8 @@ const getPokemonCard = async (id) => {
   return card.data;
 }
 
-const getAllPokemonCards = async () => {
-  const url = `https://api.pokemontcg.io/v2/cards`;
+const getAllPokemonCards = async (page) => {
+  const url = `https://api.pokemontcg.io/v2/cards?page=${page}&pageSize=10`;
   const response = await customFetch('GET', url);
   const jsonResponse  = await response.json();
   const cards = jsonResponse.data;
@@ -50,16 +50,20 @@ const getAllPokemonCards = async () => {
 const main = async () => {
   const id = 'base1-4';
   const card = await getPokemonCard(id);
-  const cards = await getAllPokemonCards();
+  const cards = await getAllPokemonCards(60);
   let acc = ``;
   cards.forEach(element => {
     const idPokeball = `pokeball-${element.id}`;
-    console.log(element.rarity)
-    console.log(element)
+    console.log(element.rarity);
+    console.log(element);
     acc += `
               <div class="card">
                   <div class="img">
                   <img class="img-item" src="${element.images.small}" alt="">
+                  </div>
+                  <span class="card-name">${element.name}</span>
+                  <div class="${element.rarity}" id=rarity>
+                  <div>${element.rarity}</div>
                   </div>
                   <div class="card-text">
                   <span>$<span class="price-tag">${element.cardmarket.prices.trendPrice}</span></span>
@@ -70,6 +74,7 @@ const main = async () => {
               </div>
   `;
 });
+
 document.getElementById("app").innerHTML = acc;
 }
 
@@ -262,11 +267,11 @@ function readProductData(product) {
       id: product.querySelector("button").getAttribute("id"),
       amount: 1,
       pokeball: product.querySelector(".prueba").getAttribute("id"),
+      rarity: product.querySelector(".price-tag").innerText,
   };
   document.getElementById(productInfo.pokeball).classList.add("prueba2");
   console.log(productInfo);
   const exist = inCart.some((product) => product.id === productInfo.id);
-
   if (exist) {
       const products = inCart.map((product) => {
           if (product.id === productInfo.id) {
@@ -289,6 +294,7 @@ function readProductData(product) {
       
 
   }
+
   console.log(productInfo.price);
   
   cartHTML();
