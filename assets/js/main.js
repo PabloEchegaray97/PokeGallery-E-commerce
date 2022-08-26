@@ -311,7 +311,7 @@ function cartHTML() {
       </td>
       <td>${product.title}</td>
       <td>${product.amount}</td>
-      <td>${product.price}</td>
+      <td>$${product.price}</td>
       `;
 
       cartContainer.appendChild(row);
@@ -390,6 +390,6 @@ inCart.forEach((product)=>{
   cartTotal =  (product.price* product.amount) + cartTotal;
   console.log("total : "+cartTotal);
 })
-  document.querySelector(".total-carrito").innerText = cartTotal;
+  document.querySelector(".total-carrito").innerText = `$${cartTotal.toFixed(2)}`;
 }
 

@@ -217,14 +217,15 @@ p {
 }
 
 .mint {
-  background-color: rgba(120, 255, 86, 0.8588235294);
-  font-size: 0.9rem;
-  color: #171717;
-  font-weight: 700;
-  border-radius: 2px;
   position: absolute;
-  right: 0;
   padding: 0.1rem;
+  border-radius: 0.1rem;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 600;
+  right: 0;
+  background-color: mediumspringgreen;
 }
 
 .hero-text-container {
@@ -278,8 +279,8 @@ p {
 
 .carrito {
   padding-top: 4rem;
-  height: 80%;
   width: 100%;
+  min-height: 30em;
 }
 
 .cart-total {
@@ -298,7 +299,6 @@ p {
 
 .show-cart {
   width: 100%;
-  height: 100vh;
 }
 
 .cart-item {
@@ -340,13 +340,14 @@ p {
   z-index: 10;
   width: 60%;
   max-width: 600px;
-  max-height: 70%;
+  height: 40em;
   background-color: #fff;
   -webkit-border-bottom-left-radius: 10px;
   -moz-border-radius-bottomleft: 10px;
   border-bottom-left-radius: 10px;
   transform: var(--transform);
   transition: var(--transition);
+  overflow: auto;
 }
 
 .modal__text {
@@ -382,6 +383,9 @@ p {
   padding: 1rem;
   font-size: 2rem;
 }
+.modal__close:hover {
+  color: #ea2b2b;
+}
 
 .cart-buttons {
   display: flex;
@@ -389,7 +393,6 @@ p {
 }
 
 .cart-container {
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -398,6 +401,14 @@ p {
 .borrar-producto {
   color: #000;
   font-size: 1rem;
+}
+
+.cart-status {
+  justify-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 .category {
