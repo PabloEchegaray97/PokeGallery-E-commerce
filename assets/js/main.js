@@ -39,7 +39,7 @@ const getPokemonCard = async (id) => {
 }
 
 const getAllPokemonCards = async (page) => {
-  const url = `https://api.pokemontcg.io/v2/cards?page=${page}&pageSize=10`;
+  const url = `https://api.pokemontcg.io/v2/cards?page=${page}&pageSize=21`;
   const response = await customFetch('GET', url);
   const jsonResponse  = await response.json();
   const cards = jsonResponse.data;
@@ -50,7 +50,7 @@ const getAllPokemonCards = async (page) => {
 const main = async () => {
   const id = 'base1-4';
   const card = await getPokemonCard(id);
-  const cards = await getAllPokemonCards(60);
+  const cards = await getAllPokemonCards(acc2);
   let acc = ``;
   cards.forEach(element => {
     const idPokeball = `pokeball-${element.id}`;
@@ -58,12 +58,12 @@ const main = async () => {
     console.log(element);
     acc += `
               <div class="card">
-                  <div class="img">
+                  <div class="img ${element.rarity}">
                   <img class="img-item" src="${element.images.small}" alt="">
                   </div>
                   <span class="card-name">${element.name}</span>
-                  <div class="${element.rarity}" id=rarity>
-                  <div>${element.rarity}</div>
+                  <div class="rarity ${element.rarity}">
+                  ${element.rarity}
                   </div>
                   <div class="card-text">
                   <span>$<span class="price-tag">${element.cardmarket.prices.trendPrice}</span></span>
@@ -237,9 +237,16 @@ function deleteProduct(e) {
   if (e.target.classList.contains("borrar-producto")) {
       const productID = e.target.getAttribute("id");
       const pokeballID = `pokeball-${productID}`
+      const pokequery = document.getElementById(pokeballID) ?? "null";
+
+      console.log(pokequery);
+      if (pokequery!="null") {
+        document.getElementById(pokeballID).classList.remove("prueba2");
+      }
       console.log(productID);
       inCart = inCart.filter((product) => product.id !== productID);
-      document.getElementById(pokeballID).classList.remove("prueba2");
+      
+      
       localStorage.setItem("inCart", JSON.stringify(inCart));
       console.log(inCart);
       cartHTML();
@@ -393,3 +400,19 @@ inCart.forEach((product)=>{
   document.querySelector(".total-carrito").innerText = `$${cartTotal.toFixed(2)}`;
 }
 
+let nextPage = document.querySelector(".next-page");
+let previousPage = document.querySelector(".previous-page");
+let acc2 = 1;
+nextPage.addEventListener("click", (e)=>{
+  acc2++;
+  main()
+ 
+})
+let catchCards = document.querySelectorAll(".card");
+previousPage.addEventListener("click", (e)=>{
+  if (acc2 > 1) {
+    acc2--;
+    main()
+    catchCards.style.animation = "deploy2 1s 1";
+  }
+});

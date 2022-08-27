@@ -105,6 +105,7 @@ header ul li a {
   margin: 1rem;
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
+  animation: deploy 1.5s 1;
 }
 
 .img {
@@ -136,6 +137,7 @@ p {
   font-size: 1.4rem;
   color: #171717;
   font-weight: 700;
+  z-index: 5;
 }
 
 .product-price {
@@ -178,6 +180,7 @@ p {
   font-size: 1.1rem;
   transition: 0.5s;
   font-weight: 600;
+  z-index: 3;
 }
 
 .add-to:hover {
@@ -201,6 +204,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 3;
 }
 
 .prueba {
@@ -228,6 +232,22 @@ p {
   background-color: mediumspringgreen;
 }
 
+@keyframes deploy {
+  0% {
+    transform: translateY(-30vh) translateX(0vw) rotate(180deg);
+  }
+  30% {
+    transform: translateY(-0.5vh);
+  }
+}
+@keyframes deploy2 {
+  0% {
+    transform: translateY(30vh) translateX(0vw) rotate(-180deg);
+  }
+  30% {
+    transform: translateY(-0.5vh);
+  }
+}
 .hero-text-container {
   position: absolute;
   z-index: 3;
@@ -493,25 +513,12 @@ p {
   background-color: rgb(39, 96, 255);
 }
 
-.Holo {
-  background-color: rgb(130, 48, 185);
-}
-
-.EX {
-  background-color: rgb(212, 198, 44);
-  color: black !important;
-}
-
-.undefined {
-  display: none;
-}
-
 .Common {
   background-color: rgb(221, 227, 221);
   color: black !important;
 }
 
-#rarity {
+.rarity {
   position: absolute;
   padding: 0.1rem;
   border-radius: 0.1rem;
@@ -519,6 +526,11 @@ p {
   text-transform: uppercase;
   font-size: 0.8rem;
   font-weight: 600;
+  z-index: 4;
+}
+
+.undefined {
+  font-size: 0rem;
 }
 
 .Uncommon {
@@ -533,6 +545,176 @@ p {
   text-align: center;
   background-color: rgba(225, 225, 225, 0.8588235294);
   font-weight: 600;
+  z-index: 3;
+}
+
+:root {
+  --color1: rgba(92, 220, 255, 0.229);
+  --color2: rgba(255, 0, 230, 0.262);
+}
+
+.Holo {
+  background-color: #040712;
+  background-image: var(--front);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  transform-origin: center;
+}
+
+.Holo:hover {
+  box-shadow: -20px -20px 30px -25px var(--color1), 20px 20px 30px -25px var(--color2), -7px -7px 10px -5px var(--color1), 7px 7px 10px -5px var(--color2), 0 0 13px 4px rgba(255, 255, 255, 0.3), 0 55px 35px -20px rgba(0, 0, 0, 0.5);
+}
+
+.Holo:before,
+.Holo:after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  mix-blend-mode: color-dodge;
+}
+
+.Holo:before {
+  background-position: 50% 50%;
+  background-size: 300% 300%;
+  background-image: linear-gradient(115deg, transparent 0%, var(--color1) 25%, transparent 47%, transparent 53%, var(--color2) 75%, transparent 100%);
+  opacity: 0.5;
+  filter: brightness(0.5) contrast(1);
+  z-index: 1;
+}
+
+.Holo:after {
+  opacity: 1;
+  background-image: url("https://assets.codepen.io/13471/sparkles.gif"), url(https://assets.codepen.io/13471/Holo.png), linear-gradient(125deg, rgba(255, 0, 132, 0.3137254902) 15%, rgba(252, 164, 0, 0.2509803922) 30%, rgba(255, 255, 0, 0.1882352941) 40%, rgba(0, 255, 138, 0.1254901961) 60%, rgba(0, 207, 255, 0.2509803922) 70%, rgba(204, 76, 250, 0.3137254902) 85%);
+  background-position: 50% 50%;
+  background-size: 160%;
+  background-blend-mode: overlay;
+  z-index: 2;
+  filter: brightness(1) contrast(1);
+  mix-blend-mode: color-dodge;
+  opacity: 0.4;
+}
+
+.Holo.active:after,
+.Holo:hover:after {
+  filter: brightness(1) contrast(1);
+  opacity: 1;
+}
+
+.Holo.active,
+.Holo:hover {
+  transition: box-shadow 0.1s ease-out;
+}
+
+.Holo.active:before,
+.Holo:hover:before {
+  background-image: linear-gradient(110deg, transparent 25%, var(--color1) 48%, var(--color2) 52%, transparent 75%);
+  background-position: 50% 50%;
+  background-size: 250% 250%;
+  opacity: 0.88;
+  filter: brightness(0.66) contrast(1.33);
+}
+
+@keyframes HoloSparkle {
+  0%, 100% {
+    opacity: 0.75;
+    background-position: 50% 50%;
+    filter: brightness(1.2) contrast(1.25);
+  }
+  5%, 8% {
+    opacity: 1;
+    background-position: 40% 40%;
+    filter: brightness(0.8) contrast(1.2);
+  }
+  13%, 16% {
+    opacity: 0.5;
+    background-position: 50% 50%;
+    filter: brightness(1.2) contrast(0.8);
+  }
+  35%, 38% {
+    opacity: 1;
+    background-position: 60% 60%;
+    filter: brightness(1) contrast(1);
+  }
+  55% {
+    opacity: 0.33;
+    background-position: 45% 45%;
+    filter: brightness(1.2) contrast(1.25);
+  }
+}
+@keyframes HoloGradient {
+  0%, 100% {
+    opacity: 0.5;
+    background-position: 50% 50%;
+    filter: brightness(0.5) contrast(1);
+  }
+  5%, 9% {
+    background-position: 100% 100%;
+    opacity: 1;
+    filter: brightness(0.75) contrast(1.25);
+  }
+  13%, 17% {
+    background-position: 0% 0%;
+    opacity: 0.88;
+  }
+  35%, 39% {
+    background-position: 100% 100%;
+    opacity: 1;
+    filter: brightness(0.5) contrast(1);
+  }
+  55% {
+    background-position: 0% 0%;
+    opacity: 1;
+    filter: brightness(0.75) contrast(1.25);
+  }
+}
+@keyframes HoloCard {
+  0%, 100% {
+    transform: rotateZ(0deg) rotateX(0deg) rotateY(0deg);
+  }
+  5%, 8% {
+    transform: rotateZ(0deg) rotateX(6deg) rotateY(-20deg);
+  }
+  13%, 16% {
+    transform: rotateZ(0deg) rotateX(-9deg) rotateY(32deg);
+  }
+  35%, 38% {
+    transform: rotateZ(3deg) rotateX(12deg) rotateY(20deg);
+  }
+  55% {
+    transform: rotateZ(-3deg) rotateX(-12deg) rotateY(-27deg);
+  }
+}
+.Holo {
+  background-color: rgb(130, 48, 185);
+}
+
+.EX, .GX {
+  background-color: rgb(212, 198, 44);
+  color: black !important;
+}
+
+.page-buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10rem;
+}
+
+.page-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  width: 5rem;
+  height: 5rem;
+  margin: 0.5rem;
 }
 
 /*# sourceMappingURL=style.css.map */
