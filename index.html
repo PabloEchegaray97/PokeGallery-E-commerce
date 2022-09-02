@@ -14,8 +14,10 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
 
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="shortcut icon" href="assets/img/pokeball.ico" type="image/x-icon">
+
 </head>
 
 <body>
@@ -24,7 +26,7 @@
       <a href="#" class="logo"><img src="assets/img/logo2.png" alt="" class="logo"></a>
       <ul>
 
-        <li><a href="#">Cartas</a></li>
+        <li><a href="./pages/cards.html">Cartas</a></li>
         <li><a href="#">Accesorios</a></li>
         <li><a href="#">Contacto</a></li>
         <a class="cart hero__cta" id="open">
@@ -38,7 +40,7 @@
   <main>
     <div class="hero">
       <div class="hero-text-container">
-        <h2 class="hero-title">Tu colección de cartas pokémon en un solo lugar</h2>
+        <h2 class="hero-title title">Tu colección de cartas pokémon en un solo lugar</h2>
 
       </div>
       <div class="container-img">
@@ -46,51 +48,127 @@
       </div>
       </img>
     </div>
-    <section class="category">
-      <div class="category-item">
-        <h4 class="category-title">HOLO</h4>
-        <div class="category-img category-img3"></div>
+    
+    <div class="banner">
+      <img src="assets/img/Banner  Astral.png" alt="" class="banner-img">
+      <h4 class="title">¡Descubre los ultimos lanzamientos!</h4>
+      <button class="banner-btn">VER CARTAS</button>
+    </div>
+    <div class="banner banner-2">
+      <img src="assets/img/banner2.jpg" alt="" class="banner-img">
+      <div class="title-abs">
+        <h4 class="title">¿Necesitas un pin de snorlax mas grande? Te cubrimos</h4>
+        <button class="banner-btn banner-btn-abs">COMPRAR</button>
       </div>
-      <div class="category-item">
-        <h4 class="category-title">ART</h4>
-        <div class="category-img category-img2"></div>
+    </div>
+    
+    
+    
+    
+    <h4 class="title title-bold">Explora mas productos</h4>
+      <div class="more-products">
+        <div class="product-container">
+          <div class="img-container">
+            <img src="./assets/img/squirtletoy.png" alt="" class="product-img">
+          </div>
+          <span class="product-text">FIGURAS</span>
+          
+        </div>
+        <div class="product-container">
+          <div class="img-container img-container-mod">
+            <img src="./assets/img/pin2.png" alt="" class="product-img">
+          </div>
+          <span class="product-text">PINS</span>
+          
+        </div>
+        <div class="product-container">
+          <div class="img-container img-container-mod2">
+            <img src="./assets/img/cards2.png" alt="" class="product-img">
+          </div>
+          <span class="product-text">CARTAS</span>
+          
+        </div>
+        <div class="product-container">
+          <div class="img-container img-container-mod3">
+            <img src="./assets/img/pikaplush.png" alt="" class="product-img">
+          </div>
+          <span class="product-text">PELUCHES</span>
+          
+        </div>
+        
       </div>
-      <div class="category-item">
-        <h4 class="category-title">MISC</h4>
-        <div class="category-img"></div>
-      </div>
-    </section>
-    <p class="section-text"> <span>Cartas pokémon</span></p>
+    </div>
     <div class="container">
-      <div id="lista-productos" class="lista-productos">
+      <h4 class="title title-bold" >Pokémon destacado</h4>
+      <div class="ft-characters">
 
-        <div class="card">
+        <a href="#" class="character-container">
+          <img src="./assets/img/ftcharizard.gif" alt="" class="character-img">
+          <span class="product-text">Charizard</span>
+        </a>
+        <a href="#" class="character-container">
+        
+          <img src="./assets/img/ftevee.jpg" alt="" class="character-img">
+          <span class="product-text">Eve</span>
+      
+        </a>
+        <a href="#" class="character-container">
+        
+          <img src="./assets/img/ftgengar.jpg" alt="" class="character-img">
+          <span class="product-text">Gengar</span>
+      
+        </a>
+        <a href="#" class="character-container">
+        
+          <img src="./assets/img/ftpikachu.jpg" alt="" class="character-img">
+          <span class="product-text">Pikachu</span>
+      
+        </a>
+        <a href="#" class="character-container">
+        
+          <img src="./assets/img/ftsnorlax.gif" alt="" class="character-img">
+          <span class="product-text">Snorlax</span>
+      
+        </a>
+        
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="contact">
+        <div class="logo-container">
 
-          <div class="img">
+          <img src="./assets/img/pokeballclosedblack.png" alt="" class="logo-footer">
+          <span class="logo-title">PokeGallery</span>
+        </div>
+        <ul class="list">
+          
 
-            <img class="img-item" src="assets/img/charizard.jpg" alt="">
-          </div>
-          <div class="card-text">
-            <span class="price-tag"><span>$</span></span>
-            <p class="card-title">2231</p>
-          </div>
-          <button class="agregar-carrito add-to" id="${producto.id}">Adquirir<img src="assets/img/pokeballopen.png"
-              class="add-to-img" id="2" alt=""></button>
+          <li class="list__item"><i class='bx bxs-map'></i>Bandera de los andes 1923 - Ciudad de Mendoza</li>
+          <li class="list__item"><i class='bx bxs-phone' ></i>+54 0800 000 000</li>
+          <li class="list__item"><i class='bx bxs-envelope' ></i>pokegallery@unmail.com</li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h5 class="footer-title">Productos</h5>
+        <ul class="list">
+          <li class="list__item"><a href="#" >Cartas</a></li>
+          <li class="list__item"><a href="#" >Figuras</a></li>
+          <li class="list__item"><a href="#" >Llaveros</a></li>
+          <li class="list__item"><a href="#" >Accesorios</a></li>
+          <li class="list__item"><a href="#" >Peluches</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h5 class="footer-title">Social</h5>
+        <div class="footer-links">
+          <i class='bx bx-mod bxl-linkedin-square'></i>
+          <i class='bx bx-mod bxl-github' ></i>
+          <i class='bx bx-mod bxl-instagram-alt' ></i>
+          
 
         </div>
       </div>
-    </div>
-
-    <div id="otros-productos">
-      <h4>Otros productos</h4>
-    </div>
-    <div id="seccion-card"></div>
-    <div id="app" class="app"></div>
-    <div class="page-buttons-container">
-
-      <button class="previous-page page-button"><img src="assets/img/left-arrow-alt-regular-24.png" alt=""></button>
-      <button class="next-page page-button"><img src="assets/img/right-arrow-alt-regular-24.png" alt=""></button>
-    </div>
+    </footer>
   </main>
 
   <section class="modal">
@@ -133,7 +211,8 @@
     </div>
   </section>
 
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/nav.js" type="module"></script>
+  <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
 
 </body>
 

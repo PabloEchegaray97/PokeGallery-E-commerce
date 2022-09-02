@@ -9,246 +9,214 @@
 @import './components/cart';
 @import './components/categories';
 @import './components/toastify&sweetalert';
+@import './components/pageButtons';
 
-
-.app {
-    display: flex;
-    justify-content: center;
- 
-    flex-wrap: wrap;
-    
+.ft-characters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-bottom: 2rem;
 }
-.Rare {
-    background-color: rgb(39, 96, 255);
-    
+.character-img {
+  width: 12rem;
+  margin: 1rem;
 }
-
-.Common {
-    background-color: rgb(221, 227, 221);
-    color: black !important;
+.title {
+  font-size: 3rem;
+  font-weight: 300;
+  text-align: center;
+  margin: 2rem 0;
 }
-.rarity {
-    position: absolute;
-    padding: .1rem;
-    border-radius: .1rem;
+.banner {
+  margin: 1rem 18rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+.banner-img {
+  width: 100%;
+}
+.banner-btn {
+  width: 10rem;
+  height: 4.5rem;
+  font-size: 1.3rem;
+  background-color: white;
+  font-weight: 600;
+  border: 2px solid black;
+  transition: .3s;
+  &:hover {
+    background-color: black;
     color: white;
-    text-transform: uppercase;
-    font-size: .8rem;
-    font-weight: 600;
-    z-index: 4;    
-}
-.undefined {
-    font-size: 0rem;
-}
-.Uncommon {
-    background-color: rgb(67, 180, 67)
-}
-.Promo {
-    background-color: sandybrown;
-}
-.card-name {
-    text-align: center;
-    background-color: rgba(225, 225, 225, 0.8588235294);
-    font-weight:600;
-    z-index: 3;
-}
-
-:root {
-    --color1: rgba(92, 220, 255, 0.229);
-    --color2: rgba(255, 0, 230, 0.262);
-
   }
-  
-  
-  
-  .Holo {
-  
-    background-color: #040712;
-    background-image: var(--front);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    transform-origin: center;
-    
-  }
-  
-  .Holo:hover {
-    box-shadow: 
-      -20px -20px 30px -25px var(--color1), 
-      20px 20px 30px -25px var(--color2), 
-      -7px -7px 10px -5px var(--color1), 
-      7px 7px 10px -5px var(--color2), 
-      0 0 13px 4px rgba(255,255,255,0.3),
-      0 55px 35px -20px rgba(0, 0, 0, 0.5);
+}
+.banner-2 {
+  position: relative;
+  justify-content: center;
+  align-items: flex-end;
+}
+.title-abs {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin-right: 1rem;
+    h4 {
       
-  }
-  
-  
-  .Holo:before,
-  .Holo:after {
-    content: "";
-    position: absolute;
-    pointer-events: none;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    background-repeat: no-repeat;
-    opacity: .5;
-    mix-blend-mode: color-dodge;
-    
-  }
-  
-  .Holo:before {
-    background-position: 50% 50%;
-    background-size: 300% 300%;
-    background-image: linear-gradient(
-      115deg,
-      transparent 0%,
-      var(--color1) 25%,
-      transparent 47%,
-      transparent 53%,
-      var(--color2) 75%,
-      transparent 100%
-    );
-    opacity: .5;
-    filter: brightness(.5) contrast(1);
-    z-index: 1;
-  }
-  
-  .Holo:after {
-    opacity: 1;
-    background-image: url("https://assets.codepen.io/13471/sparkles.gif"), 
-      url(https://assets.codepen.io/13471/Holo.png), 
-      linear-gradient(125deg, #ff008450 15%, #fca40040 30%, #ffff0030 40%, #00ff8a20 60%, #00cfff40 70%, #cc4cfa50 85%);
-    background-position: 50% 50%;
-    background-size: 160%;
-    background-blend-mode: overlay;
-    z-index: 2;
-    filter: brightness(1) contrast(1);
-    
-    mix-blend-mode: color-dodge;
-    opacity: .4;
-  }
-  
-  .Holo.active:after,
-  .Holo:hover:after {
-    filter: brightness(1) contrast(1);;
-    opacity: 1;
-  }
-  
-  .Holo.active,
-  .Holo:hover {
-    
-    transition: box-shadow 0.1s ease-out;
-  }
-  
-  .Holo.active:before,
-  .Holo:hover:before {
-    
-    background-image: linear-gradient(
-      110deg,
-      transparent 25%,
-      var(--color1) 48%,
-      var(--color2) 52%,
-      transparent 75%
-    );
-    background-position: 50% 50%;
-    background-size: 250% 250%;
-    opacity: .88;
-    filter: brightness(.66) contrast(1.33);
-    
-  }
- 
-  
-  
-  
-  
-  
-  @keyframes HoloSparkle {
-    0%, 100% {
-      opacity: .75; background-position: 50% 50%; filter: brightness(1.2) contrast(1.25);
+      font-weight: 300;
     }
-    5%, 8% {
-      opacity: 1; background-position: 40% 40%; filter: brightness(.8) contrast(1.2);
-    }
-    13%, 16% {
-      opacity: .5; background-position: 50% 50%; filter: brightness(1.2) contrast(.8);
-    }
-    35%, 38% {
-      opacity: 1; background-position: 60% 60%; filter: brightness(1) contrast(1);
-    }
-    55% {
-      opacity: .33; background-position: 45% 45%; filter: brightness(1.2) contrast(1.25);
-    }
-  }
-  
-  @keyframes HoloGradient {
-    0%, 100% {
-      opacity: 0.5;
-      background-position: 50% 50%;
-      filter: brightness(.5) contrast(1);
-    }
-    5%, 9% {
-      background-position: 100% 100%;
-      opacity: 1;
-      filter: brightness(.75) contrast(1.25);
-    }
-    13%, 17% {
-      background-position: 0% 0%;
-      opacity: .88;
-    }
-    35%, 39% {
-      background-position: 100% 100%;
-      opacity: 1;
-      filter: brightness(.5) contrast(1);
-    }
-    55% {
-      background-position: 0% 0%;
-      opacity: 1;
-      filter: brightness(.75) contrast(1.25);
-    }
-  }
-  
-  @keyframes HoloCard {
-    0%, 100% {
-      transform: rotateZ(0deg) rotateX(0deg) rotateY(0deg);
-    }
-    5%, 8% {
-      transform: rotateZ(0deg) rotateX(6deg) rotateY(-20deg);
-    }
-    13%, 16% {
-      transform: rotateZ(0deg) rotateX(-9deg) rotateY(32deg);
-    }
-    35%, 38% {
-      transform: rotateZ(3deg) rotateX(12deg) rotateY(20deg);
-    }
-    55% {
-      transform: rotateZ(-3deg) rotateX(-12deg) rotateY(-27deg);
-    }
-  }
-  
+}
+.banner-btn-abs {
+  width: 12rem;
+  background-color: transparent;
+}
+.title-bold {
+  font-weight: 800;
+  font-size: 2rem;
+  color: #303030;
+  margin: 2rem 0;
+}
+.img-container {
+  width: 18rem;
+  height: 18rem;
+  margin: 0 1rem;
+  position: relative;
+  background-color: #8EC5FC;
+  background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+}
+.img-container-mod {
+  background-color: #4158D0;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+}
+.img-container-mod2 {
+  background-color: #85FFBD;
+background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+}
+.img-container-mod3 {
+  background-color: #FF9A8B;
+background-image: linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);
 
-.Holo {
-    background-color: rgb(130, 48, 185);
 }
-.EX, .GX {
-    background-color: rgb(212, 198, 44);
-    color: black!important;
+
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.page-buttons-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10rem;
-}
-.page-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  width: 5rem;
-  height: 5rem;
-  margin: .5rem;
+
+.product-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
   
+}
+.more-products {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.product-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.character-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.product-text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #303030;
+}
+.footer {
+  background-color: #303030;
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem 18rem;
+  
+  
+}
+.contact {
+  display: flex;
+  flex-direction: column;
+}
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+.list__item {
+  color: white;
+  letter-spacing: 2px;
+  font-size: .9rem;
+  padding: .2rem;
+  display: flex;
+  align-items: center;
+  a {
+    color: white;
+    &:hover {
+      color: red;
+      transition: .5s;
+    }
+  }
+}
+.logo-container {
+  margin-bottom: .5rem;
+  display: flex;
+  align-items: center;
+}
+.logo-footer {
+  width: 2rem;
+  height: 2rem;
+  
+}
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem;
+}
+.footer-section-mod {
+  flex-direction: row;
+}
+.footer-title {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  
+}
+.footer-links {
+  display: flex;
+  justify-content: center;
+
+}
+.footer-links-img {
+  width: 3rem;
+  margin: 0 1rem;
+}
+.bx {
+  color: white;
+  font-size: 1.5rem;
+  padding-right: .2rem;
+}
+.bx-mod {
+  font-size: 3rem;
+  margin-right: .6rem; 
+  &:hover {
+    color: red;
+    cursor: pointer;
+    transition: 0.6s;
+  }
+}
+.logo-title {
+  color:white;
+  font-weight: 600;
+  font-size: 1.2rem;
+  &:hover {
+    color: red;
+    transition: .5s;
+  }
 }
