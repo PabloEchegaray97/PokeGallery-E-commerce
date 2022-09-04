@@ -23,24 +23,36 @@ class Product {
   }
 }
 
-const charizard = new Product(1,"Charizard","../assets/img/charizard.png", 1000, 0, 0,);
-const squirtle = new Product(2,"Squirtle","../assets/img/squirtle.jpg", 1000, 0, 31,);
-const pikachu = new Product(3,"Pikachu","../assets/img/pikachu.jpg", 2000, 0, 0,);
+const tcgFusion = new Product(1,"Booster Pack: Fusion Strike x4","../assets/img/cardsjson/1.jpg", 1000, 0, 0,);
+const tcgVividVolt = new Product(2,"Booster Pack: Vivid Voltage x4","../assets/img/cardsjson/2.jpg", 1000, 0, 31,);
+const tcgCR = new Product(3,"Booster Pack: Chilling REIGN x5","../assets/img/cardsjson/3.jpg", 2000, 0, 0,);
+const tcgAR = new Product(4,"Booster Pack: Astral Radiance x5","../assets/img/cardsjson/5.jpg", 2000, 0, 0,);
+const tcgboxBS = new Product(5, "TCG: Brilliant Stars","../assets/img/cardsjson/6.jpg", 2000, 0, 0,)
+const tcgboxLO = new Product(6, "TCG: Brilliant Stars","../assets/img/cardsjson/8.jpg", 2000, 0, 0,)
+const tcgboxFS = new Product(7, "TCG: Brilliant Stars","../assets/img/cardsjson/9.jpg", 2000, 0, 0,)
+const tcgboxST = new Product(8, "TCG: Brilliant Stars","../assets/img/cardsjson/10.jpg", 2000, 0, 0,)
 
+const charizard1 = new Product(101, "Charizard","../assets/img/ftpokemon/charizard1.png", 2000, 0, 0)
 const charizardMint = {
-  ...charizard,
+  ...tcgFusion,
   id:4,
   title:"Charizard Mint",
   price:2500,
   mint:"MINT",
 }
 
-const products = [charizard, squirtle, pikachu, charizardMint];
+const products = [tcgFusion, tcgVividVolt, tcgCR, tcgAR, tcgboxBS, tcgboxLO, tcgboxFS, tcgboxST];
+
+const products2 = [charizard1];
 
 console.log(products[1].calculateDesc());
 generateCards(products, "lista-productos");
 
+
+
+
 loadEventListeners();
+
 
 
 

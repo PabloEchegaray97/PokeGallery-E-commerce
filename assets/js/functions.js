@@ -250,31 +250,32 @@ function generateCards(cards, identificador) {
         const idPokeball = `pokeball-${cardId}` 
             if (product.descuento > 0){ 
                 (document.getElementById(identificador).innerHTML += `
-                <div class="card">
-                    <div class="img">
-                    <img class="img-item" src="${cardImg}" alt="">
-                    </div>
-                    <div class="off30">${cardDesc}% OFF</div>
-                    <div class="card-text">
-                    <span>$<span class="price-tag">${product.calculateDesc()}</span></span>
-                    <p class ="card-title">${cardTitle}</p>
-                    </div>
-                    <button class="agregar-carrito add-to" id="${cardId}">Adquirir<span class="prueba" id="${idPokeball}"></span></button>
-                    
-                </div>`)} 
+                <div class="card card-mod">
+                        <div class="img">
+                            <img class="img-item" src="${cardImg}" alt="">
+                        </div>
+                        <span class="card-name">${cardTitle}</span>
+                        <div class="off30">${cardDesc}% OFF</div>
+                        <div class="card-text">
+                            <span>$<span class="price-tag">${cardPrice}</span></span>
+                            <p class ="card-title">${cardTitle}</p>
+                        </div>
+                        <button class="agregar-carrito add-to" id="${cardId}"><span class="prueba" id="${idPokeball}"></span>Adquirir</button>
+                    </div>`)} 
             else {
                 document.getElementById(identificador).innerHTML += `
-                <div class="card">
-                    <div class="img">
-                    <img class="img-item" src="${cardImg}" alt="">
-                    </div>
-                    <div class="mint">${(product?.mint||"") }</div>
-                    <div class="card-text">
-                    <span>$<span class="price-tag">${cardPrice}</span></span>
-                    <p class ="card-title">${cardTitle}</p>
-                </div>
-                <button class="agregar-carrito add-to" id="${cardId}">Adquirir<span class="prueba" id="${idPokeball}"></span></button>
-                </div>`;
+                <div class="card card-mod">
+                        <div class="img">
+                            <img class="img-item" src="${cardImg}" alt="">
+                        </div>
+                        <span class="card-name">${cardTitle}</span>
+                        
+                        <div class="card-text">
+                            <span>$<span class="price-tag">${cardPrice}</span></span>
+                            <p class ="card-title">${cardTitle}</p>
+                        </div>
+                        <button class="agregar-carrito add-to" id="${cardId}"><span class="prueba" id="${idPokeball}"></span>Adquirir</button>
+                    </div>`;
             }
     });
   }

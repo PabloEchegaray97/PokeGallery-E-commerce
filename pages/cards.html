@@ -14,6 +14,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
 
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="shortcut icon" href="../assets/img/pokeball.ico" type="image/x-icon">
 </head>
@@ -38,47 +40,31 @@
     <main>
 
 
+        <div class="banner banner-mod">
+            <img src="../assets/img/Banner  Astral.png" alt="" class="banner-img">
+            <h4 class="title">¡Nuestros ultimos lanzamientos!</h4>
 
+        </div>
+        <div class="container-products">
 
-
-        <p class="section-text"> <span>Cartas pokémon</span></p>
-        <section class="category">
-            <div class="category-item" id="holo">
-                <h4 class="category-title">HOLO</h4>
-                <div class="category-img category-img3"></div>
-            </div>
-            <div class="category-item">
-                <h4 class="category-title">ART</h4>
-                <div class="category-img category-img2"></div>
-            </div>
-            <div class="category-item" id="misc2">
-                <h4 class="category-title">MISC</h4>
-                <div class="category-img"></div>
-            </div>
-        </section>
-        <div class="container">
             <div id="lista-productos" class="lista-productos">
-
-                <div class="card">
-
-                    <div class="img">
-
-                        <img class="img-item" src="../assets/img/charizard.jpg" alt="">
-                    </div>
-                    <div class="card-text">
-                        <span class="price-tag"><span>$</span></span>
-                        <p class="card-title">2231</p>
-                    </div>
-                    <button class="agregar-carrito add-to" id="${producto.id}">Adquirir<img
-                            src="../assets/img/pokeballopen.png" class="add-to-img" id="2" alt=""></button>
-
-                </div>
             </div>
         </div>
+        <div class="filter-cards">
+            <h4 class="title">¡Encuentra tus cartas favoritas!</h4>
+            <h4 class="title title-bold title-bold-mod">Buscar por categoria</h4>
+            <div class="select-group">
+                <select name="" id="myselect" class="form-select">
+                    <option value="all">Todos</option>
+                    <option value="holo">Holo</option>
+                    <option value="rare">Rare</option>
+                    <option value="uncommon">Uncommon</option>
+                    <option value="common">Common</option>
+                </select>
+            </div>
 
-        <div id="otros-productos">
-            <h4>Otros productos</h4>
         </div>
+
         <div id="seccion-card"></div>
         <div id="app" class="app"></div>
         <div class="page-buttons-container">
@@ -88,9 +74,77 @@
             <button class="next-page page-button"><img src="../assets/img/right-arrow-alt-regular-24.png"
                     alt=""></button>
         </div>
-        
-        <footer class="footer">
+        <div class="container">
+            <h4 class="title title-bold">Pokémon destacado</h4>
+            <div class="ft-characters">
 
+                <a href="#" class="character-container">
+                    <img src="../assets/img/ftcharizard.gif" alt="" class="character-img">
+                    <span class="product-text">Charizard</span>
+                </a>
+                <a href="#" class="character-container">
+
+                    <img src="../assets/img/ftevee.jpg" alt="" class="character-img">
+                    <span class="product-text">Eeve</span>
+
+                </a>
+                <a href="#" class="character-container">
+
+                    <img src="../assets/img/ftgengar.jpg" alt="" class="character-img">
+                    <span class="product-text">Gengar</span>
+
+                </a>
+                <a href="#" class="character-container">
+
+                    <img src="../assets/img/ftpikachu.jpg" alt="" class="character-img">
+                    <span class="product-text">Pikachu</span>
+
+                </a>
+                <a href="#" class="character-container">
+
+                    <img src="../assets/img/ftsnorlax.gif" alt="" class="character-img">
+                    <span class="product-text">Snorlax</span>
+
+                </a>
+
+            </div>
+        </div>
+        <h4 class="title title-bold">¡Mira lo que tenemos para tí de: Charizard!</h4>
+        <footer class="footer">
+            <div class="contact">
+                <div class="logo-container">
+
+                    <img src="../assets/img/pokeballclosedblack.png" alt="" class="logo-footer">
+                    <span class="logo-title">PokeGallery</span>
+                </div>
+                <ul class="list">
+
+
+                    <li class="list__item"><i class='bx bxs-map'></i>Bandera de los andes 1923 - Ciudad de Mendoza</li>
+                    <li class="list__item"><i class='bx bxs-phone'></i>+54 0800 000 000</li>
+                    <li class="list__item"><i class='bx bxs-envelope'></i>pokegallery@unmail.com</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5 class="footer-title">Productos</h5>
+                <ul class="list">
+                    <li class="list__item"><a href="#">Cartas</a></li>
+                    <li class="list__item"><a href="#">Juguetes</a></li>
+                    <li class="list__item"><a href="#">Llaveros</a></li>
+                    <li class="list__item"><a href="#">Accesorios</a></li>
+                    <li class="list__item"><a href="#">Peluches</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5 class="footer-title">Social</h5>
+                <div class="footer-links">
+                    <i class='bx bx-mod bxl-linkedin-square'></i>
+                    <i class='bx bx-mod bxl-github'></i>
+                    <i class='bx bx-mod bxl-instagram-alt'></i>
+
+
+                </div>
+            </div>
         </footer>
     </main>
 
@@ -136,7 +190,7 @@
     </section>
 
     <script src="../assets/js/main.js" type="module"></script>
-
+    <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
 </body>
 
 </html>

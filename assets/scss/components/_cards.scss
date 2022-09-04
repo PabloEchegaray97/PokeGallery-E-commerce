@@ -1,7 +1,10 @@
 .lista-productos {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-wrap: wrap;
+}
+.container-products {
+    margin: 0 18rem;
 }
 
 .card {
@@ -111,7 +114,9 @@ p {
     display: none;
 
 }
-
+.card-title-mod {
+    display: block;
+}
 .card-text {
     background-color: #e1e1e1db;
     height: 2rem;
@@ -174,6 +179,7 @@ p {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin: 0 18rem;
 }
 
 .Rare {
