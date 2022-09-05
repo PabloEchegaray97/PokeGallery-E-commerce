@@ -1,22 +1,28 @@
 const cart = document.querySelector("#carrito");
 const emptyCartBtn = document.querySelector("#vaciar-carrito");
 const confirmBuyBtn = document.querySelector("#confirmar-compra");
+
+
 const productList = document.querySelector("#lista-productos");
 const productList2 = document.querySelector("#app");
 let cartTotal = 0;
 const cartContainer = document.querySelector("#lista-carrito tbody");
-
 let totalArticles = document.querySelector(".cart-total");
 
 let cartStatus = document.querySelector("#estado-carrito");
 
 let inCart = JSON.parse(localStorage.getItem("inCart")) ?? [];
-
-function loadEventListeners() {
+function eventDeleteProduct() {
+    cart.addEventListener("click", deleteProduct);
+}
+function eventAddProduct() {
     productList.addEventListener("click", addProduct);
     productList2.addEventListener("click", addProduct);
-    cart.addEventListener("click", deleteProduct);
+}
 
+function eventCartAlerts() {
+    
+    
 
     emptyCartBtn.addEventListener("click", () => {
 
@@ -89,32 +95,6 @@ function loadEventListeners() {
 
     });
 }
-
-function addProduct(e) {
-
-    e.preventDefault();
-
-    if (e.target.classList.contains("agregar-carrito")) {
-        const selectedProduct = e.target.parentElement;
-        console.log(selectedProduct);
-        readProductData(selectedProduct);
-        Toastify({
-            text: "Producto agregado con éxito",
-            className: "info",
-            gravity: "bottom",
-            position: "right",
-            style: {
-                background: "#ffffff",
-                color: "#000000",
-                text: "A simple warning alert—check it out!",
-
-            }
-        }).showToast();
-
-
-    }
-}
-
 function deleteProduct(e) {
 
     e.preventDefault();
@@ -148,6 +128,32 @@ function deleteProduct(e) {
 
     }
 }
+function addProduct(e) {
+
+    e.preventDefault();
+
+    if (e.target.classList.contains("agregar-carrito")) {
+        const selectedProduct = e.target.parentElement;
+        console.log(selectedProduct);
+        readProductData(selectedProduct);
+        Toastify({
+            text: "Producto agregado con éxito",
+            className: "info",
+            gravity: "bottom",
+            position: "right",
+            style: {
+                background: "#ffffff",
+                color: "#000000",
+                text: "A simple warning alert—check it out!",
+
+            }
+        }).showToast();
+
+
+    }
+}
+
+
 
 
 function readProductData(product) {
@@ -281,7 +287,9 @@ function generateCards(cards, identificador) {
   }
 
 export {
-    loadEventListeners,
+    eventCartAlerts,
     cartHTML,
-    generateCards
+    generateCards,
+    eventAddProduct,
+    eventDeleteProduct
 };

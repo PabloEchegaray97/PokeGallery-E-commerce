@@ -22,7 +22,7 @@ const getPokemonCard = async (id) => {
 }
 
 const getAllPokemonCards = async (page) => {
-    const url = `https://api.pokemontcg.io/v2/cards?page=${page}&pageSize=40`;
+    const url = `https://api.pokemontcg.io/v2/cards?page=${page}&pageSize=80`;
     const response = await customFetch('GET', url);
     const jsonResponse = await response.json();
     const cards = jsonResponse.data;
@@ -95,10 +95,10 @@ previousPage.addEventListener("click", (e) => {
     }
 });
 
-const myselected = document.querySelector("#myselect");
-myselected.addEventListener("change", (e) => {
+const myselect = document.querySelector("#myselect");
+myselect.addEventListener("change", (e) => {
     e.preventDefault();
-    valor = myselected.value;
+    valor = myselect.value;
     console.log(valor);
     main(valor);
 });

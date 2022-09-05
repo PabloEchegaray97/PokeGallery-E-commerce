@@ -22,25 +22,41 @@
 
 <body>
   <header>
-    <nav>
-      <a href="#" class="logo"><img src="assets/img/logo2.png" alt="" class="logo"></a>
-      <ul>
-
-        <li><a href="./pages/cards.html">Cartas</a></li>
-        <li><a href="./pages/ftcharacters.html">Accesorios</a></li>
-        <li><a href="#">Contacto</a></li>
-        <a class="cart hero__cta" id="open">
-          <img src="assets/img/bx-cart.svg" alt="" class="cart-img">
-          <span class="cart-total">0</span>
-        </a>
-      </ul>
-    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-menu movil sticky-top">
+      <div class="container-fluid">
+        <a href="#" class="logo"><img src="assets/img/logo2.png" alt="" class="logo"></a>
+          <button class="navbar-toggler border-nav bg-button" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <ul class="navbar-nav align-items-center">
+                  <li class="nav-item">
+                      <a class="nav-link font-mod" href="pages/cards.html">Cartas</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link font-mod" href="#">Accesorios</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link font-mod" href="#">Contacto</a>
+                  </li>
+                  <li class="cart-container-mod">
+                    <a class="cart hero__cta" id="open">
+                      <img src="assets/img/bx-cart.svg" alt="" class="cart-img">
+                      <span class="cart-total">0</span>
+                    </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
 
   </header>
   <main>
     <div class="hero">
       <div class="hero-text-container">
-        <h2 class="hero-title title">Tu colección de cartas pokémon en un solo lugar</h2>
+        <h2 class="hero-title">Tu colección de cartas pokémon en un solo lugar</h2>
 
       </div>
       <div class="container-img">
@@ -177,8 +193,9 @@
     </div>
   </section>
 
-  <script src="assets/js/nav.js" type="module"></script>
+  <script src="assets/js/mainIndex.js" type="module"></script>
   <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 

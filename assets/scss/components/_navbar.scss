@@ -7,6 +7,9 @@ header {
 }
 .logo {
     width: 15rem;
+    @media screen and (max-width:451px) {
+        width: 10rem;
+    }
 }
 
 nav {
@@ -21,6 +24,9 @@ header.sticky {
     padding:5px 100px;
     background-color: white;
     border-bottom: .5px solid #f0f0f0;
+    @media (max-width: 1024px) {
+        padding: 0;
+    }
 }
 header.sticky .logo {
     color:black;
@@ -36,7 +42,6 @@ header .logo {
     text-transform: uppercase;
     letter-spacing: 2px;
     transition: .6s;
-    margin-left: 1rem;
 }
 header ul {
     position: relative;
@@ -47,13 +52,4 @@ header ul {
 header ul li {
     position: relative;
     list-style: none;
-}
-header ul li a {
-    position: relative;
-    margin: 0 15px;
-    text-decoration: none;
-    color: #000;
-    letter-spacing: 2px;
-    font-weight: 600;
-    transition: .6s;
 }

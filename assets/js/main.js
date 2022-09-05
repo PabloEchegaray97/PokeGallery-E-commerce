@@ -1,6 +1,6 @@
 import {main} from './api.js';
 import {nav} from './nav.js';
-import {loadEventListeners, cartHTML,generateCards} from './functions.js';
+import {eventCartAlerts, cartHTML,generateCards,eventAddProduct,eventDeleteProduct} from './functions.js';
 import {open, close} from './cartModal.js';
 main();
 nav;
@@ -51,11 +51,7 @@ generateCards(products, "lista-productos");
 
 
 
-loadEventListeners();
-
-
-
-
-
-
+eventCartAlerts();
+eventAddProduct();
+eventDeleteProduct();
 

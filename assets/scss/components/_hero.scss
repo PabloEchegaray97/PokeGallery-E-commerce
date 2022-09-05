@@ -21,8 +21,23 @@
     height: 25rem;
     animation: pikachu 2.4s 1;
     margin-top: 20rem;
+    @media (max-width:451px) {
+        width: 15rem;
+        height: 15rem;
+      }
     
 }
+.hero-title {
+    font-size: 3rem;
+    font-weight: 300;
+    text-align: center;
+    @media (min-width:782px) and (max-width:1024px) { 
+      font-size: 2rem;
+    }
+    @media screen and (max-width:992px) {
+      font-size: 1.5rem;
+    }
+  }
 @keyframes pikachu {
     0% {
         transform: translateY(-30vh) translateX(150vw) rotate(-130deg) ;

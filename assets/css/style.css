@@ -32,6 +32,11 @@ header {
 .logo {
   width: 15rem;
 }
+@media screen and (max-width: 451px) {
+  .logo {
+    width: 10rem;
+  }
+}
 
 nav {
   display: flex;
@@ -47,6 +52,11 @@ header.sticky {
   padding: 5px 100px;
   background-color: white;
   border-bottom: 0.5px solid #f0f0f0;
+}
+@media (max-width: 1024px) {
+  header.sticky {
+    padding: 0;
+  }
 }
 
 header.sticky .logo {
@@ -65,7 +75,6 @@ header .logo {
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: 0.6s;
-  margin-left: 1rem;
 }
 
 header ul {
@@ -80,16 +89,6 @@ header ul li {
   list-style: none;
 }
 
-header ul li a {
-  position: relative;
-  margin: 0 15px;
-  text-decoration: none;
-  color: #000;
-  letter-spacing: 2px;
-  font-weight: 600;
-  transition: 0.6s;
-}
-
 .lista-productos {
   display: flex;
   justify-content: space-evenly;
@@ -98,6 +97,11 @@ header ul li a {
 
 .container-products {
   margin: 0 18rem;
+}
+@media screen and (max-width: 1024px) {
+  .container-products {
+    margin: 1rem;
+  }
 }
 
 .card {
@@ -261,6 +265,11 @@ p {
   justify-content: center;
   flex-wrap: wrap;
   margin: 0 18rem;
+}
+@media screen and (max-width: 1024px) {
+  .app {
+    margin: 1rem;
+  }
 }
 
 .Rare {
@@ -481,6 +490,28 @@ p {
   animation: pikachu 2.4s 1;
   margin-top: 20rem;
 }
+@media (max-width: 451px) {
+  .hero-img {
+    width: 15rem;
+    height: 15rem;
+  }
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 300;
+  text-align: center;
+}
+@media (min-width: 782px) and (max-width: 1024px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 992px) {
+  .hero-title {
+    font-size: 1.5rem;
+  }
+}
 
 @keyframes pikachu {
   0% {
@@ -494,7 +525,6 @@ p {
   }
 }
 .cart {
-  margin-right: 2rem;
   cursor: pointer;
 }
 
@@ -513,6 +543,7 @@ p {
 .cart-total {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 20px;
   height: 20px;
   position: relative;
@@ -521,7 +552,6 @@ p {
   border-radius: 50%;
   left: 21px;
   color: white;
-  bottom: 10px;
 }
 
 .show-cart {
@@ -743,18 +773,50 @@ p {
   font-size: 3rem;
   font-weight: 300;
   text-align: center;
-  margin: 2rem 0;
+  margin: 1rem;
+}
+@media (min-width: 782px) and (max-width: 1024px) {
+  .title {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 992px) {
+  .title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 782px) and (max-width: 1024px) {
+  .title-mod {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 451px) {
+  .title-mod {
+    font-size: 0.7rem;
+  }
 }
 
 .banner {
-  margin: 1rem 18rem;
+  margin: 1rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+@media screen and (max-width: 992px) {
+  .banner {
+    margin: 0;
+  }
+}
 
 .banner-img {
   width: 100%;
+}
+@media screen and (max-width: 451px) {
+  .banner-img {
+    height: 20rem;
+    object-fit: cover;
+  }
 }
 
 .banner-btn {
@@ -765,10 +827,23 @@ p {
   font-weight: 600;
   border: 2px solid black;
   transition: 0.3s;
+  margin: 1rem 0;
 }
 .banner-btn:hover {
   background-color: black;
   color: white;
+}
+@media (min-width: 451px) and (max-width: 992px) {
+  .banner-btn {
+    width: 10rem;
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 451px) {
+  .banner-btn {
+    width: 7rem;
+    font-size: 1rem;
+  }
 }
 
 .banner-2 {
@@ -788,10 +863,29 @@ p {
 .title-abs h4 {
   font-weight: 300;
 }
+@media screen and (max-width: 451px) {
+  .title-abs {
+    width: 100%;
+    margin: 0;
+  }
+}
 
 .banner-btn-abs {
   width: 12rem;
   background-color: transparent;
+  margin: 0;
+}
+@media (min-width: 451px) and (max-width: 992px) {
+  .banner-btn-abs {
+    width: 10rem;
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 451px) {
+  .banner-btn-abs {
+    width: 7rem;
+    font-size: 1rem;
+  }
 }
 
 .title-bold {
@@ -799,6 +893,16 @@ p {
   font-size: 2rem;
   color: #303030;
   margin: 2rem 0;
+}
+@media (min-width: 782px) and (max-width: 1024px) {
+  .title-bold {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 992px) {
+  .title-bold {
+    font-size: 1.5rem;
+  }
 }
 
 .img-container {
@@ -842,6 +946,7 @@ p {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin: 1rem 0;
 }
 
 .product-container {
@@ -869,15 +974,33 @@ p {
   justify-content: space-around;
   padding: 2rem 18rem;
 }
+@media screen and (max-width: 992px) {
+  .footer {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  .footer {
+    flex-direction: column;
+  }
+}
 
 .contact {
   display: flex;
   flex-direction: column;
+  margin: 1rem;
 }
 
 .list {
   list-style-type: none;
   padding: 0;
+}
+@media screen and (max-width: 600px) {
+  .list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .list__item {
@@ -901,6 +1024,11 @@ p {
   display: flex;
   align-items: center;
 }
+@media screen and (max-width: 600px) {
+  .logo-container {
+    justify-content: center;
+  }
+}
 
 .logo-footer {
   width: 2rem;
@@ -910,7 +1038,12 @@ p {
 .footer-section {
   display: flex;
   flex-direction: column;
-  margin: 0 1rem;
+  margin: 1rem;
+}
+@media screen and (max-width: 600px) {
+  .footer-section {
+    align-items: center;
+  }
 }
 
 .footer-section-mod {
@@ -986,6 +1119,39 @@ p {
   min-width: 18rem;
   height: 26rem;
   animation: none;
+}
+
+.nav-collapse {
+  flex-grow: unset;
+}
+
+.navbar {
+  padding: 0 !important;
+}
+
+.font-mod {
+  position: relative;
+  margin: 0 15px;
+  text-decoration: none;
+  color: #000;
+  letter-spacing: 2px;
+  transition: 0.6s;
+}
+
+.cart-container-mod {
+  padding-right: 5rem;
+  width: 3rem;
+  height: 2rem;
+}
+@media screen and (max-width: 992px) {
+  .cart-container-mod {
+    padding: 0;
+    margin: 1rem 0;
+  }
+}
+
+.navbar-toggler {
+  border: none !important;
 }
 
 /*# sourceMappingURL=style.css.map */

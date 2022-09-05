@@ -1,5 +1,4 @@
 .cart {
-    margin-right: 2rem;
     cursor: pointer;
 }
 .cart-img {
@@ -17,6 +16,7 @@
 .cart-total {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 20px;
     height: 20px;
     position: relative;
@@ -25,7 +25,6 @@
     border-radius: 50%;
     left: 21px;
     color: white;
-    bottom: 10px;
 }
 
 .show-cart {
