@@ -5,7 +5,8 @@ nav;
 open;
 close;
 let urlPokeballGIF = `assets/img/pokeball.gif`;
+let urlPokeballStatic = `assets/img/pokeball_static.png`;
 cartHTML(urlPokeballGIF);
 
 eventDeleteProduct();
-eventCartAlerts();
+eventCartAlerts(urlPokeballStatic);
