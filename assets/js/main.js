@@ -30,9 +30,9 @@ const tcgVividVolt = new Product(2,"Booster Pack: Vivid Voltage x4","../assets/i
 const tcgCR = new Product(3,"Booster Pack: Chilling REIGN x5","../assets/img/cardsjson/3.jpg", 2000, 0, 0,);
 const tcgAR = new Product(4,"Booster Pack: Astral Radiance x5","../assets/img/cardsjson/5.jpg", 2000, 0, 0,);
 const tcgboxBS = new Product(5, "TCG: Brilliant Stars","../assets/img/cardsjson/6.jpg", 2000, 0, 0,)
-const tcgboxLO = new Product(6, "TCG: Brilliant Stars","../assets/img/cardsjson/8.jpg", 2000, 0, 0,)
-const tcgboxFS = new Product(7, "TCG: Brilliant Stars","../assets/img/cardsjson/9.jpg", 2000, 0, 0,)
-const tcgboxST = new Product(8, "TCG: Brilliant Stars","../assets/img/cardsjson/10.jpg", 2000, 0, 0,)
+const tcgboxLO = new Product(6, "TCG: Lost Origin","../assets/img/cardsjson/8.jpg", 2000, 0, 0,)
+const tcgboxFS = new Product(7, "TCG: Fusion Strike","../assets/img/cardsjson/9.jpg", 2000, 0, 0,)
+const tcgboxST = new Product(8, "TCG: Silver Tempest","../assets/img/cardsjson/10.jpg", 2000, 0, 0,)
 
 const charizard1 = new Product(101, "Charizard","../assets/img/ftpokemon/charizard1.png", 2000, 0, 0)
 const charizardMint = {
