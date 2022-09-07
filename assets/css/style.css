@@ -862,7 +862,8 @@ p {
   margin-top: 4rem;
   border: 1px solid #202020;
   border-radius: 0.2rem;
-  min-width: 10rem;
+  text-align: center;
+  min-width: 14rem;
 }
 
 .page-buttons-container {
