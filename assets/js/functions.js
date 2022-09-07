@@ -22,7 +22,7 @@ function eventAddProduct() {
     productList2.addEventListener("click", addProduct);
 }
 
-function eventCartAlerts() {
+function eventCartAlerts(urlPokeballStatic) {
     
     
 
