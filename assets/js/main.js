@@ -1,6 +1,6 @@
 import {main} from './api.js';
 import {nav} from './nav.js';
-import {eventCartAlerts, cartHTML,generateCards,eventAddProduct,eventDeleteProduct} from './functions2.js';
+import {eventCartAlerts, cartHTML,generateCards,eventAddProduct,eventDeleteProduct} from './functions.js';
 import {open, close} from './cartModal.js';
 main();
 nav;
