@@ -24,7 +24,7 @@
     background-color: #000;
     border-radius: 50%;
     left: 21px;
-    color: white;
+    color: $lightColor;
 }
 
 .show-cart {
@@ -40,7 +40,7 @@
     border: 2px solid #8f8f8f;
     border-radius: .3rem;
     overflow: hidden;
-    background-color: white;
+    background-color: $lightColor;
     }
 
 .modal{
@@ -81,7 +81,10 @@
     transform: var(--transform);
     transition:var(--transition);
     overflow: auto;
-    
+    @media screen and (max-width:600px) {
+        width: 100%;
+        height: 100%;
+    }
 }
 .modal__text {
     font-size: 1.3rem;
@@ -92,8 +95,8 @@
     height: 5rem;
 }
 .modal__button {
-    background-color: #ea2b2b;
-    color: white;
+    background-color: $hoverColor;
+    color: $lightColor;
     padding: 0.6rem;
     border-radius: .3rem;
     border: none;
@@ -113,7 +116,7 @@
     padding: 1rem;
     font-size: 2rem;
     &:hover {
-        color: #ea2b2b;
+        color: $hoverColor;
     }
 }
 
@@ -139,3 +142,12 @@
     align-items: center;
     margin-top: 1rem;
 }
+.cart-container-mod {
+    padding-right: 5rem;
+    width: 3rem;
+    height: 2rem;
+    @media screen and (max-width: 992px) {
+      padding: 0;
+      margin: 1rem 0;
+    }
+  }

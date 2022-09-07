@@ -6,7 +6,8 @@ main();
 nav;
 open;
 close;
-cartHTML();
+let urlPokeballGIF = `../assets/img/pokeball.gif`;
+cartHTML(urlPokeballGIF);
 
 class Product {
   constructor(id,title,img,price,amount,descuento) {

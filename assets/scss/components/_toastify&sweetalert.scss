@@ -1,14 +1,14 @@
 .swal2-styled.swal2-confirm {
-    background-color: #ea2b2b !important;
+    background-color: $hoverColor !important;
    
     box-shadow: none !important;
 }
 .swal2-styled.swal2-cancel {
-    color:black !important;
+    color:$fontColor !important;
     background-color: rgb(230, 230, 230) !important;
 }
 .info {
     margin-top: 4rem;
-    border: 1px solid black;
+    border: 1px solid $fontColor;
     border-radius: .2rem;
 }

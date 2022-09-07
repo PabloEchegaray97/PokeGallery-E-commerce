@@ -1,0 +1,104 @@
+.footer {
+    background-color: #303030;
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem 18rem;
+
+    @media screen and (max-width:992px) {
+        padding: 0;
+    }
+
+    @media screen and (max-width:600px) {
+        flex-direction: column;
+    }
+
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.list {
+    list-style-type: none;
+    padding: 0;
+
+    .list__item {
+        color: $lightColor;
+        letter-spacing: 2px;
+        font-size: .9rem;
+        padding: .2rem;
+        display: flex;
+        align-items: center;
+
+        a {
+            color: $lightColor;
+
+            &:hover {
+                color: $hoverColor;
+                transition: .5s;
+            }
+        }
+
+        @media screen and (max-width:600px) {
+            letter-spacing: 0px;
+            font-size: .8rem;
+        }
+    }
+
+    @media screen and (max-width:600px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+.logo-container {
+    margin-bottom: .5rem;
+    display: flex;
+    align-items: center;
+
+    .logo-footer {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .logo-title {
+        color: $lightColor;
+        font-weight: 600;
+        font-size: 1.2rem;
+
+        &:hover {
+            color: $hoverColor;
+            transition: .5s;
+        }
+    }
+
+    @media screen and (max-width:600px) {
+        justify-content: center;
+    }
+}
+
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+
+    .footer-title {
+        color: $lightColor;
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: center;
+    }
+
+    @media screen and (max-width:600px) {
+        align-items: center;
+    }
+}

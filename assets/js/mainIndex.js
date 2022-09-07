@@ -4,7 +4,8 @@ import {open, close} from './cartModal.js';
 nav;
 open;
 close;
-cartHTML();
+let urlPokeballGIF = `assets/img/pokeball.gif`;
+cartHTML(urlPokeballGIF);
 
 eventDeleteProduct();
 eventCartAlerts();

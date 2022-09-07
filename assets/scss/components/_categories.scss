@@ -11,10 +11,8 @@
     border-radius: 2px;
     width: 30%;
     height: 20rem;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: $lightColor;
+    @extend %flex;
 }
 .category-img {
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../img/4.png);
@@ -45,7 +43,5 @@
     background-color: #e1e1e17b;
     height: 12rem;
     font-size: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @extend %flex;
 }

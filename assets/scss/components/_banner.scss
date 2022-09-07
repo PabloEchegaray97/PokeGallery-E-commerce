@@ -1,0 +1,72 @@
+.banner {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .banner-img {
+        width: 100%;
+
+        @media screen and (max-width:451px) {
+            height: 20rem;
+            object-fit: cover;
+        }
+    }
+
+    .banner-btn {
+        width: 10rem;
+        height: 4.5rem;
+        font-size: 1.3rem;
+        background-color: $lightColor;
+        font-weight: 600;
+        border: 2px solid $fontColor;
+        transition: .3s;
+        margin: 1rem 0;
+
+        &:hover {
+            background-color: $fontColor;
+            color: $lightColor;
+        }
+
+        @media (min-width:451px) and (max-width:992px) {
+            width: 10rem;
+            font-size: 1rem;
+        }
+
+        @media screen and (max-width:451px) {
+            width: 7rem;
+            font-size: 1rem;
+        }
+    }
+
+    .banner-btn-abs {
+        width: 12rem;
+        background-color: transparent;
+        margin: 0;
+
+        @media (min-width:451px) and (max-width:992px) {
+            width: 10rem;
+            font-size: 1rem;
+        }
+
+        @media screen and (max-width:451px) {
+            width: 7rem;
+            font-size: 1rem;
+        }
+    }
+
+    @media screen and (max-width:992px) {
+        margin: 0;
+    }
+
+}
+
+.banner-2 {
+    position: relative;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.banner-mod {
+    margin-top: 60.11px;
+}

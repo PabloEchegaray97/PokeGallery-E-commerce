@@ -1,13 +1,9 @@
 .page-buttons-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @extend %flex;
     height: 10rem;
   }
   .page-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @extend %flex;
     border: none;
     width: 5rem;
     height: 5rem;

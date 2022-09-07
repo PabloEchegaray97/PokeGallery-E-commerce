@@ -3,8 +3,10 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
+
 .container-products {
     margin: 0 18rem;
+
     @media screen and (max-width:1024px) {
         margin: 1rem;
     }
@@ -15,31 +17,34 @@
     max-width: 14rem;
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: $lightColor;
     margin: 1rem;
 
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
     animation: deploy 1s 1;
+    .img {
+        border-bottom: 1px solid rgb(148, 148, 148);
+        overflow: hidden;
+        height: 100%;
+    }
+    .img-item {
+        width: 100%;
+        height: 100%;
+        transition: .5s;
+        object-fit: cover;
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+    
 }
 
-.img {
-    border-bottom: 1px solid rgb(148, 148, 148);
-    overflow: hidden;
-    height: 100%;
-}
 
-.img-item {
-    width: 100%;
-    height: 100%;
-    transition: .5s;
-    object-fit: cover;
-}
 
-.img-item:hover {
-    transform: scale(1.2);
 
-}
+
+
 
 p {
     margin-top: .5rem;
@@ -85,10 +90,8 @@ p {
 }
 
 .add-to {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
+    @extend %flex;
+    background-color: $lightColor;
     border: 0;
     border-radius: 2px;
     padding: .3rem;
@@ -101,8 +104,8 @@ p {
 }
 
 .add-to:hover {
-    background-color: #ea2b2b;
-    color: white;
+    background-color: $hoverColor;
+    color: $lightColor;
     transition: .1s;
 }
 
@@ -117,15 +120,15 @@ p {
     display: none;
 
 }
+
 .card-title-mod {
     display: block;
 }
+
 .card-text {
     background-color: #e1e1e1db;
     height: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @extend %flex;
     z-index: 3;
 }
 
@@ -183,7 +186,8 @@ p {
     justify-content: center;
     flex-wrap: wrap;
     margin: 0 18rem;
-    @media screen and (max-width:1024px) { 
+
+    @media screen and (max-width:1024px) {
         margin: 1rem;
     }
 }
@@ -195,14 +199,14 @@ p {
 
 .Common {
     background-color: rgb(221, 227, 221);
-    color: black !important;
+    color: $fontColor !important;
 }
 
 .rarity {
     position: absolute;
     padding: .1rem;
     border-radius: .1rem;
-    color: white;
+    color: $lightColor;
     text-transform: uppercase;
     font-size: .8rem;
     font-weight: 600;
@@ -445,5 +449,23 @@ p {
 .EX,
 .GX {
     background-color: rgb(212, 198, 44);
-    color: black !important;
+    color: $fontColor !important;
+}
+
+.select-group {
+    width: 15rem;
+    margin: 1rem;
+
+}
+
+.card-mod {
+    min-width: 18rem;
+    height: 26rem;
+    animation: none;
+}
+
+.filter-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

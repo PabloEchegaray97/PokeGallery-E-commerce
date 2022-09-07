@@ -9,6 +9,8 @@ let cartTotal = 0;
 const cartContainer = document.querySelector("#lista-carrito tbody");
 let totalArticles = document.querySelector(".cart-total");
 
+let urlPokeballGIF = `../assets/img/pokeball.gif`;
+
 let cartStatus = document.querySelector("#estado-carrito");
 
 let inCart = JSON.parse(localStorage.getItem("inCart")) ?? [];
@@ -114,7 +116,7 @@ function deleteProduct(e) {
 
         localStorage.setItem("inCart", JSON.stringify(inCart));
         console.log(inCart);
-        cartHTML();
+        cartHTML(urlPokeballGIF);
         Toastify({
             text: "Producto eliminado con éxito",
             className: "info",
@@ -195,10 +197,10 @@ function readProductData(product) {
 
     console.log(productInfo.price);
 
-    cartHTML();
+    cartHTML(urlPokeballGIF);
 }
 
-function cartHTML() {
+function cartHTML(urlPokeball) {
     cleanHTML();
 
     inCart.forEach((product) => {
@@ -219,7 +221,7 @@ function cartHTML() {
     console.log(cartTotal)
     if (inCart.length > 0) {
         cartStatus.innerText = "¡Ya casi los tienes!";
-        document.querySelector("#modal-gif").src = "assets/img/pokeball.gif";
+        document.querySelector("#modal-gif").src = `${urlPokeball}`;
     }
 }
 
@@ -227,7 +229,7 @@ function cleanHTML() {
     cartContainer.innerHTML = "";
     totalArticles.textContent = inCart.length;
     cartStatus.innerText = "¡El carrito esta vacío!";
-    document.querySelector("#modal-gif").src = "assets/img/pokeball_static.png";
+    document.querySelector("#modal-gif").src = "../assets/img/pokeball_static.png";
     calculateTotal();
 }
 

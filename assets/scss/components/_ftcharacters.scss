@@ -1,0 +1,21 @@
+.ft-characters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 2rem;
+}
+
+.character-img {
+    width: 12rem;
+    margin: 1rem;
+}
+.character-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .product-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #303030;
+  }

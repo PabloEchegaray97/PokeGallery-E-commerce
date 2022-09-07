@@ -3,10 +3,12 @@ header {
     width: 100%;
     transition: 0.6s;
     z-index: 6;
-    
+
 }
+
 .logo {
     width: 15rem;
+
     @media screen and (max-width:451px) {
         width: 10rem;
     }
@@ -17,23 +19,29 @@ nav {
     justify-content: space-between;
     align-items: center;
 }
+
 ul {
     margin: 0;
 }
+
 header.sticky {
-    padding:5px 100px;
-    background-color: white;
+    padding: 5px 100px;
+    background-color: $lightColor;
     border-bottom: .5px solid #f0f0f0;
+
     @media (max-width: 1024px) {
         padding: 0;
     }
 }
+
 header.sticky .logo {
-    color:black;
+    color: $fontColor;
 }
+
 header.sticky ul li a {
-    color: black
+    color: $fontColor
 }
+
 header .logo {
     position: relative;
     font-weight: 700;
@@ -43,13 +51,35 @@ header .logo {
     letter-spacing: 2px;
     transition: .6s;
 }
+
 header ul {
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @extend %flex;
 }
+
 header ul li {
     position: relative;
     list-style: none;
 }
+
+.nav-collapse {
+    flex-grow: unset;
+}
+
+.navbar {
+    padding: 0 !important;
+}
+
+.font-mod {
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: #000;
+    letter-spacing: 2px;
+
+    transition: .6s;
+}
+
+  .navbar-toggler {
+    border: none!important;
+  }
