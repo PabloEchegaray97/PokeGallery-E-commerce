@@ -116,7 +116,7 @@ function deleteProduct(e) {
         console.log(inCart);
         cartHTML();
         Toastify({
-            text: "Producto eliminado con éxito",
+            text: "Producto eliminado",
             className: "info",
             gravity: "bottom",
             position: "right",
@@ -137,7 +137,7 @@ function addProduct(e) {
         console.log(selectedProduct);
         readProductData(selectedProduct);
         Toastify({
-            text: "Producto agregado con éxito",
+            text: "Producto agregado",
             className: "info",
             gravity: "bottom",
             position: "right",
