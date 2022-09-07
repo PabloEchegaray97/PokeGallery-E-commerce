@@ -1,12 +1,13 @@
 import {main} from './api.js';
 import {nav} from './nav.js';
-import {eventCartAlerts, cartHTML,generateCards,eventAddProduct,eventDeleteProduct} from './functions.js';
+import {eventCartAlerts, cartHTML,generateCards,eventAddProduct,eventDeleteProduct} from './functions2.js';
 import {open, close} from './cartModal.js';
 main();
 nav;
 open;
 close;
 let urlPokeballGIF = `../assets/img/pokeball.gif`;
+let urlPokeballStatic = `../assets/img/pokeball_static.png`;
 cartHTML(urlPokeballGIF);
 
 class Product {
@@ -52,7 +53,7 @@ generateCards(products, "lista-productos");
 
 
 
-eventCartAlerts();
+eventCartAlerts(urlPokeballStatic);
 eventAddProduct();
 eventDeleteProduct();
 
