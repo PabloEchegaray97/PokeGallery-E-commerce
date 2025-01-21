@@ -14,7 +14,6 @@
 
 .card-modal-content {
     background: white;
-    border-radius: 8px;
     width: 100%;
     max-width: 900px;
     max-height: 90vh;
@@ -71,8 +70,6 @@
 }
 
 .modal-image {
-    flex: 1;
-    max-width: 400px;
     
     @media (max-width: 768px) {
         max-width: 100%;
@@ -111,11 +108,12 @@
     position: relative;
     
     &__image {
-        flex: 1;
         max-width: 400px;
         position: relative;
         overflow: hidden;
-        border-radius: 8px;
+        min-height: 541.75px;
+        min-width: 388px;
+        border-radius: 1rem;
         
         &.Holo {
             &:before,

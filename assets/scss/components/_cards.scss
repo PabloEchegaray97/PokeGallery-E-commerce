@@ -431,6 +431,7 @@ p {
 
 .Holo {
     background-color: rgb(130, 48, 185);
+    
 }
 
 .EX,
@@ -571,7 +572,7 @@ p {
 
 .card-modal-content {
     background: white;
-    border-radius: 8px;
+    border-radius: 1rem;
     width: 100%;
     max-width: 900px;
     max-height: 90vh;
@@ -604,4 +605,17 @@ p {
         transform: scale(1.1);
         transition: all 0.2s ease;
     }
+}
+
+.card-detail__image {
+    height: 541.75px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+}
+
+.card-detail__image img {
+    max-height: 100%;
+    object-fit: contain;
+
 } 

@@ -165,6 +165,12 @@ class ProductManager {
         modalOverlay.addEventListener('click', (e) => {
             if (e.target === modalOverlay) closeModal();
         });
+
+        // Después de insertar el HTML
+        const modalImage = document.querySelector('.card-detail__image img');
+        modalImage.addEventListener('load', () => {
+            modalImage.classList.add('loaded');
+        });
     }
 }
 

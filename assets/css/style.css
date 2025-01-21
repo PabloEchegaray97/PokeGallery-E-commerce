@@ -574,7 +574,7 @@ p {
 
 .card-modal-content {
   background: white;
-  border-radius: 8px;
+  border-radius: 1rem;
   width: 100%;
   max-width: 900px;
   max-height: 90vh;
@@ -604,6 +604,16 @@ p {
     color: red;
     transform: scale(1.1);
     transition: all 0.2s ease; }
+
+.card-detail__image {
+  height: 541.75px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem; }
+
+.card-detail__image img {
+  max-height: 100%;
+  object-fit: contain; }
 
 .hero-text-container {
   position: absolute;
@@ -1056,7 +1066,6 @@ p {
 
 .card-modal-content {
   background: white;
-  border-radius: 8px;
   width: 100%;
   max-width: 900px;
   max-height: 90vh;
@@ -1103,16 +1112,13 @@ p {
     .modal-body {
       flex-direction: column; } }
 
-.modal-image {
-  flex: 1;
-  max-width: 400px; }
-  @media (max-width: 768px) {
-    .modal-image {
-      max-width: 100%; } }
-  .modal-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px; }
+@media (max-width: 768px) {
+  .modal-image {
+    max-width: 100%; } }
+.modal-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; }
 
 .modal-info {
   flex: 1;
@@ -1135,11 +1141,12 @@ p {
   gap: 2rem;
   position: relative; }
   .card-detail__image {
-    flex: 1;
     max-width: 400px;
     position: relative;
     overflow: hidden;
-    border-radius: 8px; }
+    min-height: 541.75px;
+    min-width: 388px;
+    border-radius: 1rem; }
     .card-detail__image.Holo:before, .card-detail__image.Holo:after {
       content: "";
       position: absolute;
