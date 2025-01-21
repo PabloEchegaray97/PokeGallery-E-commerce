@@ -1,14 +1,13 @@
-const apiKey = '0a62f8bc-55ae-4e7f-86fe-49da8aaf6ca9'
+import { config } from './config.js';
 
 const customFetch = async (method, url) => {
     const fetchResponse = fetch(
         url, {
             method: method,
             headers: {
-                'X-Api-Key': apiKey,
+                'X-Api-Key': config.API_KEY,
                 'Content-Type': 'application/json'
             },
-
         }
     );
     return fetchResponse;
@@ -87,6 +86,12 @@ const main = async (filter, page = 1) => {
         
         const appElement = document.getElementById("app");
         
+        // Asegurar que el selector tenga un valor válido
+        const selectElement = document.getElementById('myselect');
+        if (!selectElement.value) {
+            selectElement.value = 'all'; // Forzar el valor por defecto si está vacío
+        }
+        
         if (cards.length === 0) {
             appElement.innerHTML = `
                 <div class="no-results">
@@ -94,15 +99,15 @@ const main = async (filter, page = 1) => {
                 </div>`;
         } else {
             const cardsHTML = cards.map(element => `
-                <div class="card">
-                    <div class="img ${element.rarity}">
-                        <img loading="lazy" class="img-item" src="${element.images.small}" alt="${element.name}">
+                <div class="card" data-card-id="${element.id}">
+                    <div class="img ${element.rarity} card-clickable">
+                        <img loading="lazy" class="img-item card-clickable" src="${element.images.small}" alt="${element.name}">
                     </div>
-                    <span class="card-name">${element.name}</span>
-                    <div class="rarity ${element.rarity}">
+                    <span class="card-name card-clickable">${element.name}</span>
+                    <div class="rarity ${element.rarity} card-clickable">
                         ${element.rarity}
                     </div>
-                    <div class="card-text">
+                    <div class="card-text card-clickable">
                         <span>$<span class="price-tag">${element.cardmarket?.prices?.trendPrice || 0}</span></span>
                         <p class="card-title">${element.name}</p>
                     </div>
@@ -113,10 +118,31 @@ const main = async (filter, page = 1) => {
             `).join('');
             
             appElement.innerHTML = cardsHTML;
+            
+            // Agregar event listeners para abrir el modal
+            document.querySelectorAll('.card').forEach(card => {
+                const cardId = card.dataset.cardId;
+                
+                // Agregar click a elementos clickeables dentro de la carta
+                card.querySelectorAll('.card-clickable').forEach(element => {
+                    element.addEventListener('click', async (e) => {
+                        e.stopPropagation();
+                        await showCardDetail(cardId);
+                    });
+                });
+                
+                // Click en la carta misma
+                card.addEventListener('click', async (e) => {
+                    if (!e.target.classList.contains('agregar-carrito') && 
+                        !e.target.classList.contains('prueba')) {
+                        await showCardDetail(cardId);
+                    }
+                });
+            });
         }
         
         // Actualizar paginación y filtros
-        document.getElementById('myselect').value = filter;
+        document.getElementById('myselect').value = filter || 'all'; // Asegurar que siempre haya un valor
         document.getElementById("currentPage").textContent = page;
         document.getElementById("totalPages").textContent = totalPages;
         
@@ -138,6 +164,8 @@ const main = async (filter, page = 1) => {
         
     } catch (error) {
         console.error("Error al cargar las cartas:", error);
+        // En caso de error, asegurar que el selector tenga un valor
+        document.getElementById('myselect').value = 'all';
     } finally {
         hideLoader();
     }
@@ -168,31 +196,79 @@ function restorePokeballs() {
     });
 }
 
-let valor="all";
-let nextPage = document.querySelector(".next-page");
-let previousPage = document.querySelector(".previous-page");
-let acc2 = 1;
-nextPage.addEventListener("click", (e) => {
-    acc2++;
-    main(valor)
-
-})
-let catchCards = document.querySelectorAll(".card");
-previousPage.addEventListener("click", (e) => {
-    if (acc2 > 1) {
-        acc2--;
-        main(valor)
-        catchCards.style.animation = "deploy2 1s 1";
+const showCardDetail = async (cardId) => {
+    try {
+        showLoader();
+        const card = await getPokemonCard(cardId);
+        
+        const modalElement = document.createElement('div');
+        modalElement.className = 'card-modal-overlay';
+        modalElement.innerHTML = createModalHTML(card);
+        
+        document.body.appendChild(modalElement);
+        
+        // Manejador del cierre
+        const closeModal = (e) => {
+            e.preventDefault(); // Prevenir comportamiento por defecto
+            document.body.removeChild(modalElement);
+        };
+        
+        // Event listeners
+        modalElement.querySelector('.card-modal__close').addEventListener('click', closeModal);
+        modalElement.addEventListener('click', (e) => {
+            if (e.target === modalElement) {
+                closeModal(e);
+            }
+        });
+        
+    } catch (error) {
+        console.error('Error al cargar los detalles de la carta:', error);
+    } finally {
+        hideLoader();
     }
-});
+};
 
-const myselect = document.querySelector("#myselect");
-myselect.addEventListener("change", (e) => {
-    e.preventDefault();
-    valor = myselect.value;
-    console.log(valor);
-    main(valor);
-});
+const createModalHTML = (card) => `
+    <div class="card-modal-overlay">
+        <div class="card-modal-content">
+            <div class="card-detail">
+                <div class="card-detail__image ${card.rarity?.includes('Holo') ? 'Holo' : ''}">
+                    <img src="${card.images.large}" alt="${card.name}">
+                </div>
+                <div class="card-detail__info">
+                    <h3 class="card-detail__title">${card.name}</h3>
+                    <div class="card-detail__stats">
+                        <div class="stat">
+                            <span class="stat-label">Rareza:</span>
+                            <span class="stat-value">${card.rarity || 'N/A'}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Set:</span>
+                            <span class="stat-value">${card.set.name}</span>
+                        </div>
+                        ${card.hp ? `
+                            <div class="stat">
+                                <span class="stat-label">HP:</span>
+                                <span class="stat-value">${card.hp}</span>
+                            </div>
+                        ` : ''}
+                        ${card.types ? `
+                            <div class="stat">
+                                <span class="stat-label">Tipos:</span>
+                                <span class="stat-value">${card.types.join(', ')}</span>
+                            </div>
+                        ` : ''}
+                        <div class="stat">
+                            <span class="stat-label">Precio:</span>
+                            <span class="stat-value">$${card.cardmarket?.prices?.trendPrice || 0}</span>
+                        </div>
+                    </div>
+                </div>
+                <a class="card-modal__close">X</a>
+            </div>
+        </div>
+    </div>
+`;
 
 export {
     main

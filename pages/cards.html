@@ -21,6 +21,7 @@
 </head>
 
 <body>
+    <div id="modal-portal"></div>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-menu movil sticky-top">
             <div class="container-fluid">
@@ -173,8 +174,10 @@
         </footer>
     </main>
 
+    <!-- Mover el modal del carrito aquí -->
     <section class="modal">
-        <div class="modal__container">
+        <a href="#" class="modal__close">X</a>
+        <div class="modal-container">
             <div class="container cart-container" id="carrito-container">
                 <div id="carrito" class="carrito">
                     <table class="table" id="lista-carrito">
@@ -209,7 +212,6 @@
                     <img src="../assets/img/pokeball_static.png" alt="" id="modal-gif" class="modal__gif">
                     <p class="modal__text" id="estado-carrito">¡Ya casi los tienes!</p>
                 </div>
-                <a href="#" class="modal__close">X</a>
             </div>
         </div>
     </section>

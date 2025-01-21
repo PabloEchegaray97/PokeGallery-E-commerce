@@ -1,3 +1,6 @@
 node_modules
 
 assets/img/ftpokemon
+
+# Configuración
+assets/js/config.js
