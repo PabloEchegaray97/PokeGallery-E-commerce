@@ -15,36 +15,41 @@
 .card {
     height: 27rem;
     max-width: 14rem;
+    min-width: 14rem;
     display: flex;
     flex-direction: column;
     background-color: $lightColor;
     margin: 1rem;
-
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
-    animation: deploy 1s 1;
+    
+    &:hover {
+        -webkit-box-shadow: 0px 0px 14px 6px rgba(125, 125, 125, 0.45);
+        box-shadow: 0px 0px 14px 6px rgba(125, 125, 125, 0.45);
+    }
+    
     .img {
         border-bottom: 1px solid rgb(148, 148, 148);
         overflow: hidden;
         height: 100%;
-    }
-    .img-item {
-        width: 100%;
-        height: 100%;
-        transition: .5s;
-        object-fit: cover;
-        &:hover {
-            transform: scale(1.2);
+        background-color: #f0f0f0;
+        position: relative;
+        aspect-ratio: 2.5/3.5;
+        
+        .img-item {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: .5s;
+            object-fit: cover;
+            z-index: 1;
+            
+            &:hover {
+                transform: scale(1.2);
+            }
         }
     }
-    
 }
-
-
-
-
-
-
 
 p {
     margin-top: .5rem;
@@ -68,11 +73,6 @@ p {
 .free-shipping {
     color: #00a650;
     font-weight: 600;
-}
-
-.card:hover {
-    -webkit-box-shadow: 0px 0px 14px 6px rgba(125, 125, 125, 0.45);
-    box-shadow: 0px 0px 14px 6px rgba(125, 125, 125, 0.45);
 }
 
 .off30 {
@@ -158,34 +158,12 @@ p {
     background-color: mediumspringgreen;
 }
 
-@keyframes deploy {
-    0% {
-        transform: translateY(-30vh) translateX(0vw) rotate(180deg);
-    }
-
-    30% {
-        transform: translateY(-.5vh);
-    }
-
-}
-
-@keyframes deploy2 {
-    0% {
-        transform: translateY(30vh) translateX(0vw) rotate(80deg);
-    }
-
-    30% {
-        transform: translateY(-.5vh) rotate(80deg);
-    }
-
-}
-
-
 .app {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin: 0 18rem;
+    position: relative;
 
     @media screen and (max-width:1024px) {
         margin: 1rem;
@@ -469,3 +447,86 @@ p {
     flex-direction: column;
     align-items: center;
 }
+
+// Loader y Paginación (agregar después de los estilos existentes)
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid $hoverColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.pagination-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+    padding: 0 1rem;
+
+    @media screen and (max-width:1024px) {
+        margin: 1rem 0;
+    }
+}
+
+.pagination-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: $lightColor;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.page-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+    
+    img {
+        width: 24px;
+        height: 24px;
+    }
+
+    &:not(:disabled):hover {
+        opacity: 0.8;
+    }
+}
+
+.page-indicator {
+    font-size: 1rem;
+    color: $fontColor;
+    
+    span {
+        font-weight: bold;
+    }
+} 

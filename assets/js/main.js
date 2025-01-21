@@ -57,3 +57,32 @@ eventCartAlerts(urlPokeballStatic);
 eventAddProduct();
 eventDeleteProduct();
 
+let currentPage = 1;
+let currentFilter = "all";
+
+// Manejadores de paginación
+nextPage.addEventListener("click", async () => {
+    currentPage++;
+    await main(currentFilter, currentPage);
+    document.getElementById("currentPage").textContent = currentPage;
+});
+
+previousPage.addEventListener("click", async () => {
+    if (currentPage > 1) {
+        currentPage--;
+        await main(currentFilter, currentPage);
+        document.getElementById("currentPage").textContent = currentPage;
+    }
+});
+
+myselect.addEventListener("change", async (e) => {
+    e.preventDefault();
+    currentFilter = myselect.value;
+    currentPage = 1; // Reset a primera página al cambiar filtro
+    document.getElementById("currentPage").textContent = currentPage;
+    await main(currentFilter, currentPage);
+});
+
+// Inicialización
+main(currentFilter, currentPage);
+
