@@ -86,3 +86,90 @@ myselect.addEventListener("change", async (e) => {
 // Inicialización
 main(currentFilter, currentPage);
 
+class ProductManager {
+    constructor() {
+        this.initializeEventListeners();
+    }
+
+    initializeEventListeners() {
+        // Seleccionar todos los contenedores de productos (tanto los del JSON como los estáticos)
+        const productContainers = document.querySelectorAll('.card, .product-card');
+        
+        productContainers.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // No mostrar modal si se hace click en el botón de adquirir
+                if (e.target.classList.contains('agregar-carrito') || 
+                    e.target.closest('.agregar-carrito')) {
+                    return;
+                }
+
+                // Obtener datos del producto desde el HTML
+                const productData = {
+                    name: card.querySelector('.card-title').textContent,
+                    image: card.querySelector('img').src,
+                    price: card.querySelector('.price-tag').textContent,
+                    series: "Sword & Shield",
+                    packCount: card.querySelector('.card-title').textContent.includes('x4') ? 4 : 5,
+                    cardsPerPack: 10,
+                    description: "Expande tu colección con esta increíble expansión de Pokémon TCG."
+                };
+
+                this.showProductDetail(productData);
+            });
+        });
+    }
+
+    showProductDetail(product) {
+        const modalHTML = `
+            <div class="card-modal-overlay">
+                <div class="card-modal-content">
+                    <div class="card-detail">
+                        <div class="card-detail__image">
+                            <img src="${product.image}" alt="${product.name}">
+                        </div>
+                        <div class="card-detail__info">
+                            <h3 class="card-detail__title">${product.name}</h3>
+                            <div class="card-detail__stats">
+                                <div class="stat">
+                                    <span class="stat-label">Serie:</span>
+                                    <span class="stat-value">${product.series}</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Sobres:</span>
+                                    <span class="stat-value">${product.packCount}</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Cartas por sobre:</span>
+                                    <span class="stat-value">${product.cardsPerPack}</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Precio:</span>
+                                    <span class="stat-value">${product.price}</span>
+                                </div>
+                            </div>
+                            <p class="card-detail__description">${product.description}</p>
+                        </div>
+                        <a class="card-modal__close">X</a>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+        // Manejar el cierre del modal
+        const modalOverlay = document.querySelector('.card-modal-overlay');
+        const closeModal = () => modalOverlay.remove();
+
+        modalOverlay.querySelector('.card-modal__close').addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+    }
+}
+
+// Inicializar cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', () => {
+    new ProductManager();
+});
+

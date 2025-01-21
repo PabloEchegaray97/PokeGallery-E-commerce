@@ -270,6 +270,78 @@ const createModalHTML = (card) => `
     </div>
 `;
 
+const createBoosterHTML = (booster) => `
+    <div class="card" data-id="${booster.id}">
+        <img src="${booster.images}" alt="${booster.name}" class="card-img">
+        <div class="card-body">
+            <h5 class="card-title">${booster.name}</h5>
+            <p class="price-tag">$${booster.price}</p>
+            <button class="agregar-carrito" id="${booster.id}">
+                <img src="../assets/img/pokeball_static.png" alt="" class="prueba" id="pokeball-${booster.id}">
+                Adquirir
+            </button>
+        </div>
+    </div>
+`;
+
+// Añadir el evento click para los boosters
+document.addEventListener('click', (e) => {
+    const card = e.target.closest('.card');
+    if (card) {
+        const boosterId = card.dataset.id;
+        showBoosterDetail(boosterId);
+    }
+});
+
+// Función para mostrar el detalle del booster
+const showBoosterDetail = async (boosterId) => {
+    try {
+        showLoader();
+        const booster = await getBoosterData(boosterId);
+        
+        const modalHTML = `
+            <div class="card-modal-overlay">
+                <div class="card-modal-content">
+                    <div class="card-detail">
+                        <div class="card-detail__image">
+                            <img src="${booster.images}" alt="${booster.name}">
+                        </div>
+                        <div class="card-detail__info">
+                            <h3 class="card-detail__title">${booster.name}</h3>
+                            <div class="card-detail__stats">
+                                <div class="stat">
+                                    <span class="stat-label">Serie:</span>
+                                    <span class="stat-value">${booster.series}</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Cantidad de sobres:</span>
+                                    <span class="stat-value">${booster.packCount}</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Cartas por sobre:</span>
+                                    <span class="stat-value">${booster.cardsPerPack}</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Precio:</span>
+                                    <span class="stat-value">$${booster.price}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="card-modal__close">X</a>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+        // ... resto del código del modal
+    } catch (error) {
+        console.error('Error al cargar los detalles del booster:', error);
+    } finally {
+        hideLoader();
+    }
+};
+
 export {
     main
 };

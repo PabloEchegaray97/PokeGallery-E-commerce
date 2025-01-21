@@ -138,7 +138,9 @@ function cartHTML() {
     console.log(cartTotal)
     if (inCart.length > 0) {
         cartStatus.innerText = "¡Ya casi los tienes!";
-        document.querySelector("#modal-gif").src = "assets/img/pokeball.gif";
+        const isSubfolder = window.location.pathname.includes('/pages/');
+        const imgPath = isSubfolder ? '../assets/img/pokeball.gif' : 'assets/img/pokeball.gif';
+        document.querySelector("#modal-gif").src = imgPath;
     }
 }
 
@@ -146,7 +148,9 @@ function cleanHTML() {
     cartContainer.innerHTML = "";
     totalArticles.textContent = inCart.length;
     cartStatus.innerText = "¡El carrito esta vacío!";
-    document.querySelector("#modal-gif").src = "assets/img/pokeball_static.png";
+    const isSubfolder = window.location.pathname.includes('/pages/');
+    const imgPath = isSubfolder ? '../assets/img/pokeball_static.png' : 'assets/img/pokeball_static.png';
+    document.querySelector("#modal-gif").src = imgPath;
     calculateTotal();
 }
 

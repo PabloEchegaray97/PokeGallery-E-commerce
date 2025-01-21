@@ -1,0 +1,50 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Booster Pack: Fusion Strike x4",
+            "image": "../assets/img/cardsjson/1.jpg",
+            "price": 1000,
+            "stock": 10,
+            "series": "Sword & Shield",
+            "packCount": 4,
+            "cardsPerPack": 10,
+            "description": "¡Descubre el poder de la fusión con estos 4 sobres de Fusion Strike!",
+            "type": "booster"
+        },
+        {
+            "id": 2,
+            "name": "Booster Pack: Vivid Voltage x4",
+            "image": "../assets/img/cardsjson/2.jpg",
+            "price": 1000,
+            "stock": 31,
+            "series": "Sword & Shield",
+            "packCount": 4,
+            "cardsPerPack": 10,
+            "description": "¡Energiza tu colección con 4 sobres de Vivid Voltage!",
+            "type": "booster"
+        },
+        {
+            "id": "chilling-reign",
+            "name": "Booster Pack: Chilling REIGN x5",
+            "price": 2000,
+            "images": "../assets/img/chilling-reign.png",
+            "series": "Sword & Shield",
+            "packCount": 5,
+            "cardsPerPack": 10,
+            "releaseDate": "2021-06-18",
+            "description": "¡Domina el frío con 5 sobres de Chilling Reign!"
+        },
+        {
+            "id": "astral-radiance",
+            "name": "Booster Pack: Astral Radiance x5",
+            "price": 2000,
+            "images": "../assets/img/astral-radiance.png",
+            "series": "Sword & Shield",
+            "packCount": 5,
+            "cardsPerPack": 10,
+            "releaseDate": "2022-05-27",
+            "description": "¡Explora el poder astral con 5 sobres de Astral Radiance!"
+        }
+    ]
+}
