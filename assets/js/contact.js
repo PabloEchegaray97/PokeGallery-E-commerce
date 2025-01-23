@@ -1,7 +1,5 @@
-// Exportar la función de inicialización
 export const contact = (function() {
-    // Initialize EmailJS with your public key
-    emailjs.init(config.EMAILJS_PUBLIC_KEY); // Reemplazar con tu public key de EmailJS
+    emailjs.init(config.EMAILJS_PUBLIC_KEY); 
 
     function initializeContactForm() {
         const contactForm = document.querySelector('.contact-form');
@@ -14,12 +12,10 @@ export const contact = (function() {
             const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
 
-            // Mostrar loader o deshabilitar botón
             const submitBtn = document.querySelector('.submit-btn');
             submitBtn.disabled = true;
             submitBtn.textContent = 'Enviando...';
 
-            // Enviar email al usuario
             const userPromise = emailjs.send(config.EMAILJS_ID, config.EMAILJS_TEMPLATE_ID, {
                 to_name: name,
                 from_name: 'PokeGallery',
@@ -28,7 +24,6 @@ export const contact = (function() {
                 message: message
             });
 
-            // Enviar email al administrador
             const adminPromise = emailjs.send(config.EMAILJS_ID, config.EMAILJS_TEMPLATE_ID, {
                 to_name: 'Admin',
                 from_name: name,
@@ -37,7 +32,6 @@ export const contact = (function() {
                 message: message
             });
 
-            // Esperar a que se envíen ambos emails
             Promise.all([userPromise, adminPromise])
                 .then(function() {
                     Swal.fire({
