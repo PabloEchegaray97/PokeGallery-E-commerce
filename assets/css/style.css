@@ -1031,6 +1031,9 @@ p {
   font-weight: 300;
   text-transform: uppercase; }
 
+.mbottom {
+  margin-bottom: 2rem; }
+
 .ft-characters {
   display: flex;
   justify-content: center;

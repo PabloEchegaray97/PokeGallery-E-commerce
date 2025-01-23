@@ -78,12 +78,11 @@ previousPage.addEventListener("click", async () => {
 myselect.addEventListener("change", async (e) => {
     e.preventDefault();
     currentFilter = myselect.value;
-    currentPage = 1; // Reset a primera página al cambiar filtro
+    currentPage = 1; 
     document.getElementById("currentPage").textContent = currentPage;
     await main(currentFilter, currentPage);
 });
 
-// Inicialización
 main(currentFilter, currentPage);
 
 class ProductManager {
@@ -92,7 +91,7 @@ class ProductManager {
     }
 
     initializeEventListeners() {
-        // Seleccionar todos los contenedores de productos (tanto los del JSON como los estáticos)
+
         const productContainers = document.querySelectorAll('.card, .product-card');
         
         productContainers.forEach(card => {
@@ -166,7 +165,6 @@ class ProductManager {
             if (e.target === modalOverlay) closeModal();
         });
 
-        // Después de insertar el HTML
         const modalImage = document.querySelector('.card-detail__image img');
         modalImage.addEventListener('load', () => {
             modalImage.classList.add('loaded');
@@ -174,7 +172,6 @@ class ProductManager {
     }
 }
 
-// Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
     new ProductManager();
 });
