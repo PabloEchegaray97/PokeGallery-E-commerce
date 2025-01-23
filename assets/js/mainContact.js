@@ -1,6 +1,10 @@
 import { nav } from './nav.js';
 import { cartHTML, eventDeleteProduct, eventCartAlerts } from './functionsIndex.js';
 import { open, close } from './cartModal.js';
+import { contact } from './contact.js';
+
+// Inicializar el formulario de contacto
+contact.init();
 
 document.addEventListener('DOMContentLoaded', () => {
     // Inicializar navbar
