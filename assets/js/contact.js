@@ -1,3 +1,5 @@
+import { config } from './config.js';
+
 export const contact = (function() {
     emailjs.init(config.EMAILJS_PUBLIC_KEY); 
 
