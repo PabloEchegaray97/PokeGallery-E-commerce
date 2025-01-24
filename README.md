@@ -6,7 +6,7 @@
 
 PokeGallery es un e-commerce especializado en cartas Pokémon TCG. Desarrollado con JavaScript vanilla, HTML y CSS, ofrece una experiencia fluida para explorar y comprar cartas coleccionables.
 
-[Deploy para obtener un vistazo 🚀](https://pabloechegaray97.github.io/PokeGallery-E-commerce/)
+[Deploy para obtener un vistazo 🚀](https://poke-gallery-ecommerce.netlify.app/)
 
 ## ✨ Características
 
@@ -17,6 +17,7 @@ PokeGallery es un e-commerce especializado en cartas Pokémon TCG. Desarrollado 
 - 🎨 Interfaz intuitiva y amigable
 - 🃏 Integración con API de Pokémon TCG
 - 💾 Persistencia de datos en localStorage
+- 📧 Contacto con formulario EmailJS
 
 ## 🛠️ Tecnologías Utilizadas
 
@@ -27,6 +28,8 @@ PokeGallery es un e-commerce especializado en cartas Pokémon TCG. Desarrollado 
 - SweetAlert2
 - Toastify
 - BoxIcons
+- EmailJS
+
 
 ## 📸 Capturas de Pantalla
 
@@ -46,7 +49,10 @@ git clone https://github.com/PabloEchegaray97/PokeGallery-E-commerce.git
 cd PokeGallery-E-commerce
 ```
 
-3. Abrí index.html en tu navegador preferido o usá live server
+3. Renomombra el archivo config.example.js a config.js y agrega tus credenciales de EmailJS y Pokémon TCG API
+
+4. Abrí index.html en tu navegador preferido o usá live server
+
 
 ## 💡 Uso
 
@@ -54,6 +60,7 @@ cd PokeGallery-E-commerce
 - Filtra por categoría usando el selector
 - Agregá cartas al carrito
 - Revisá tu carrito haciendo clic en el ícono superior
+- Completá el formulario de contacto para enviar un mensaje
 
 ## 👤 Autor
 
